@@ -5,10 +5,36 @@
     padding: 0;
 }
 
-.background{
-    background: rgb(250, 250, 250);
+.img_size{
+    height: 205px;
 }
 
-.img_size{
-    height: 200px;
+@media screen and (min-width: 1536px) {
+    .img_size{
+        height: 230px;
+    }
+}
+
+@media screen and (max-width: 1200px) {
+    .img_size{
+        height: 180px;
+    }
+}
+
+@media screen and (max-width: 992px) {
+    .img_size{
+        height: 150px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .img_size{
+        height: 115px;
+    }
+}
+
+@media screen and (max-width: 576px) {
+    .img_size{
+        height: 90px;
+    }
 }

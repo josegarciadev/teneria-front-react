@@ -6,13 +6,13 @@ import styles from "./Information.module.css";
 const InformationHome = () => {
   return (
     <>
-      <div class={`${styles.background}`}>
+      
         <img
           src={teneria}
           alt=""
-          class={`${styles.img_size} d-flex justify-content-center`}
+          className={`${styles.img_size} d-flex justify-content-center`}
         />
-      </div>
+
     </>
   );
 };
