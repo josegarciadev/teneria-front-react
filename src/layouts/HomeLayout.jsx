@@ -8,7 +8,7 @@ export const HomeLayout = () => {
         <div>
             <HeaderHome/>
             <InformationHome/>
-            {/* <AboutUs/> */}
+            <AboutUs/>
         </div>
     )
 }

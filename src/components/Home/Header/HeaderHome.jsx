@@ -92,7 +92,6 @@ const HeaderHome = () => {
           <div className="col-7">
               <h1 className={`${styles.title} d-flex justify-content-center`}>Teneria Rubio</h1>
               <h1 className={`${styles.subtitle} d-flex justify-content-center`}>¡LOS QUE NUNCA SE DETIENEN!</h1>
-            {/* <img src={back} alt="" className={`${styles.img_size}`}/> */}
           </div>
           <div className="col-5">
               <img src={img1} alt="" className={`${styles.img_size} d-flex justify-content-center`}/>

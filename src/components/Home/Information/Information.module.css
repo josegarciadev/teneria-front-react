@@ -7,6 +7,8 @@
 
 .img_size{
     height: 205px;
+    width: 100%;
+    background-size: cover;
 }
 
 @media screen and (min-width: 1536px) {

@@ -1,16 +1,99 @@
-.contenedor{
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap");
+
+.content{
+    background-image: url(../AboutUs/images/Planta-Teneria-Rubio.jpg);
+    width: 100%;
+    height: 600px;
+    background-size: cover;
     position: relative;
-    display: inline-block;
-    text-align: center;
 }
-.encima{
+
+.content:before{
+    content: "";
+    width: 100%;
+    height: 100%;
+    background-color: rgb(41, 0, 13);
     position: absolute;
-    top: 10px;
-    left: 10px;
+    opacity: 0.3;
 }
-.centrado{
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+
+.titleOne{
+    position: relative;
+    font-size: 40px;
+    color: white;
+    font-family: "Poppins", sans-serif;
+    top: 30px;
 }
+
+.texto{
+    position: relative;
+    font-size: 20px;
+    color: white;
+    font-family: "Poppins", sans-serif;
+    top: 40px;
+    text-align: justify;
+    margin-right: 100px;
+    margin-left: 100px;
+    margin-bottom: 30px;
+}
+
+.titleTwo{
+    position: relative;
+    font-size: 40px;
+    color: white;
+    font-family: "Poppins", sans-serif;
+    top: 30px;
+}
+
+.mission{
+    position: relative;
+    font-size: 20px;
+    color: white;
+    font-family: "Poppins", sans-serif;
+    top: 40px;
+    text-align: justify;
+    margin-right: 100px;
+    margin-left: 100px;
+    margin-bottom: 30px;
+}
+
+.titleThree{
+    position: relative;
+    font-size: 40px;
+    color: white;
+    font-family: "Poppins", sans-serif;
+    top: 30px;
+}
+
+.vision{
+    position: relative;
+    font-size: 20px;
+    color: white;
+    font-family: "Poppins", sans-serif;
+    top: 40px;
+    text-align: justify;
+    margin-right: 100px;
+    margin-left: 100px;
+    margin-bottom: 30px;
+}
+
+.titleFour{
+    position: relative;
+    font-size: 40px;
+    color: white;
+    font-family: "Poppins", sans-serif;
+    top: 30px;
+}
+
+.objective{
+    position: relative;
+    font-size: 20px;
+    color: white;
+    font-family: "Poppins", sans-serif;
+    top: 40px;
+    text-align: justify;
+    margin-right: 100px;
+    margin-left: 100px;
+    margin-bottom: 30px;
+}
+
