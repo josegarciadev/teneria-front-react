@@ -27,19 +27,23 @@
 }
 
 .title {
-  margin-top: 150px;
+  margin-top: 200px;
   color: #630021;
   font-family: "Poppins", sans-serif;
-  font-size: 40px;
+  font-size: 50px;
   line-height: 1em;
 }
 
 .subtitle {
   color: #ffc82e;
   font-family: "Poppins", sans-serif;
-  font-size: 35px;
+  font-size: 45px;
   line-height: 1em;
-  margin-bottom: 150px;
+  margin-bottom: 160px;
+}
+
+.player{
+  margin-top:80px;
 }
 
 @media screen and (min-width: 1536px) {
@@ -53,14 +57,18 @@
 
   .title {
     margin-top: 150px;
-    font-size: 50px;
+    font-size: 55px;
     line-height: 1em;
   }
 
   .subtitle {
-    font-size: 45px;
+    font-size: 50px;
     line-height: 1em;
     margin-bottom: 150px;
+  }
+
+  .player{
+    margin-top:50px;
   }
 }
 

@@ -12,17 +12,17 @@
     content: "";
     width: 100%;
     height: 100%;
-    background-color: rgb(41, 0, 13);
+    background-color: rgb(99, 0, 33);
     position: absolute;
-    opacity: 0.3;
+    opacity: 0.7;
 }
 
-.titleOne{
+.title{
     position: relative;
     font-size: 40px;
     color: white;
     font-family: "Poppins", sans-serif;
-    top: 30px;
+    top: 230px;
 }
 
 .texto{
@@ -30,70 +30,11 @@
     font-size: 20px;
     color: white;
     font-family: "Poppins", sans-serif;
-    top: 40px;
+    top: 240px;
     text-align: justify;
     margin-right: 100px;
     margin-left: 100px;
     margin-bottom: 30px;
 }
 
-.titleTwo{
-    position: relative;
-    font-size: 40px;
-    color: white;
-    font-family: "Poppins", sans-serif;
-    top: 30px;
-}
-
-.mission{
-    position: relative;
-    font-size: 20px;
-    color: white;
-    font-family: "Poppins", sans-serif;
-    top: 40px;
-    text-align: justify;
-    margin-right: 100px;
-    margin-left: 100px;
-    margin-bottom: 30px;
-}
-
-.titleThree{
-    position: relative;
-    font-size: 40px;
-    color: white;
-    font-family: "Poppins", sans-serif;
-    top: 30px;
-}
-
-.vision{
-    position: relative;
-    font-size: 20px;
-    color: white;
-    font-family: "Poppins", sans-serif;
-    top: 40px;
-    text-align: justify;
-    margin-right: 100px;
-    margin-left: 100px;
-    margin-bottom: 30px;
-}
-
-.titleFour{
-    position: relative;
-    font-size: 40px;
-    color: white;
-    font-family: "Poppins", sans-serif;
-    top: 30px;
-}
-
-.objective{
-    position: relative;
-    font-size: 20px;
-    color: white;
-    font-family: "Poppins", sans-serif;
-    top: 40px;
-    text-align: justify;
-    margin-right: 100px;
-    margin-left: 100px;
-    margin-bottom: 30px;
-}
 

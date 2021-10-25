@@ -1,14 +1,22 @@
 import React from 'react'
 import HeaderHome from '../components/Home/Header/HeaderHome'
 import InformationHome from '../components/Home/Information/InformationHome'
-import AboutUs from '../components/Home/AboutUs/AboutUs'
+import AboutUsHome from '../components/Home/AboutUs/AboutUsHome'
+import VisionMissionHome from '../components/Home/VisionMission/VisionMissionHome'
+import ObjectivesHome from '../components/Home/Objectives/ObjectivesHome'
+import OurProductsHome from '../components/Home/OurProducts/OurProductsHome'
+import ContactHome from '../components/Home/Contact/ContactHome'
 
 export const HomeLayout = () => {
     return (
         <div>
             <HeaderHome/>
             <InformationHome/>
-            <AboutUs/>
+            <AboutUsHome/>
+            <VisionMissionHome/>
+            <ObjectivesHome/>
+            <OurProductsHome/>
+            <ContactHome/>
         </div>
     )
 }

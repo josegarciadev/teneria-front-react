@@ -1,42 +1,81 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Cookie&display=swap');
 
-*{
-    margin: 0;
-    padding: 0;
+* {
+  margin: 0;
+  padding: 0;
 }
 
-.img_size{
-    height: 205px;
-    width: 100%;
-    background-size: cover;
+.img_size {
+  height: 205px;
+  width: 100%;
+  background-size: cover;
+}
+
+.logo_size {
+  height: 60px;
+  width: 70px;
+  margin-left: 200px;
+  margin-right: 15px;
+}
+
+.block {
+  height: 150px;
+  background: #ffc82e;
+}
+
+.title {
+  font-size: 30px;
+  color: white;
+  line-height: 1.1em;
+  font-weight: bold;
+  font-family: "Poppins", sans-serif;
+}
+
+.subtitle {
+    font-size: 30px;
+    color: white;
+    line-height: 1.1em;
+    font-weight: bold;
+    font-family: "Poppins", sans-serif;
+    margin-left: 250px!important;
+}
+
+.titleTwo {
+    font-size: 50px;
+    color: #630021;
+    line-height: 1.1em;
+    font-weight: bold;
+    font-family: 'Cookie', cursive;
+    margin-right: 120px!important;
 }
 
 @media screen and (min-width: 1536px) {
-    .img_size{
-        height: 230px;
-    }
+  .img_size {
+    height: 230px;
+  }
 }
 
 @media screen and (max-width: 1200px) {
-    .img_size{
-        height: 180px;
-    }
+  .img_size {
+    height: 180px;
+  }
 }
 
 @media screen and (max-width: 992px) {
-    .img_size{
-        height: 150px;
-    }
+  .img_size {
+    height: 150px;
+  }
 }
 
 @media screen and (max-width: 768px) {
-    .img_size{
-        height: 115px;
-    }
+  .img_size {
+    height: 115px;
+  }
 }
 
 @media screen and (max-width: 576px) {
-    .img_size{
-        height: 90px;
-    }
+  .img_size {
+    height: 90px;
+  }
 }

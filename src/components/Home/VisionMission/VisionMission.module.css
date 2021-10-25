@@ -1,0 +1,48 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap");
+
+.content {
+  /* background-image: url(../AboutUs/images/Planta-Teneria-Rubio.jpg); */
+  background: white;
+  width: 100%;
+  height: 300px;
+  /* background-size: cover;
+  position: relative; */
+}
+
+.titleOne {
+  font-size: 40px;
+  color: #630021;
+  font-family: "Poppins", sans-serif;
+  margin-top: 60px;
+}
+
+.mission {
+  font-size: 20px;
+  color: black;
+  font-family: "Poppins", sans-serif;
+  top: 240px;
+  text-align: justify;
+  margin-right: 100px;
+  margin-left: 100px;
+  margin-bottom: 30px;
+}
+
+.titleTwo {
+  font-size: 40px;
+  color: #ffc82e;
+  font-family: "Poppins", sans-serif;
+  margin-top: 60px;
+}
+
+.vision {
+  font-size: 20px;
+  color: black;
+  font-family: "Poppins", sans-serif;
+  top: 240px;
+  text-align: justify;
+  margin-right: 100px;
+  margin-left: 100px;
+  margin-bottom: 60px;
+}
+
+
