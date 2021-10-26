@@ -17,6 +17,7 @@ import ProducProviders from '../views/Admin/ProductProviders/ProducProviders.jsx
 import Lines from '../views/Admin/Lines/Lines.jsx';
 import LinesProds from '../views/Admin/LinesProds/LinesProds.jsx';
 import LinesLogs from '../views/Admin/LinesLogs/LinesLogs.jsx';
+import EmployeesLogs from '../views/Admin/EmployeesLogs.jsx';
 
 var ThemeRoutesAdmin = [
   { 
@@ -38,11 +39,18 @@ var ThemeRoutesAdmin = [
     component: Employees
   },
   { 
+    path: '/admin/dashboard/employeesLogs', 
+    name: 'Entradas/Salidas empleados', 
+    icon: 'ti-loop', 
+    component: EmployeesLogs
+  },
+  { 
     path: '/admin/dashboard/lineasLogs', 
-    name: 'Entradas/Salidas de Lineas', 
+    name: 'Entradas/Salidas Lineas', 
     icon: 'ti-loop', 
     component: LinesLogs
   },
+
   { 
     path: '/admin/dashboard/line', 
     name: 'Lineas', 

@@ -1,9 +1,10 @@
 import React from "react";
 import { Table } from "reactstrap";
 import moment from "moment";
-import ModalEditLine from "./ModalEditLineLogs";
-import ModalDeleteLine from "./ModalDeleteLineLogs";
-const TableListLine = ({handleDispatch, linesLogs,linesProds,employees}) => {
+import ModalEditEmployeesLogs from "./ModalEditEmployeesLogs";
+import ModalDeleteEmployeeLogs from "./ModalDeleteEmployeesLogs";
+
+const TableEmployeesLogs = ({handleDispatch, empLogs,employees}) => {
   const handleChangeTime = (date) => {
     return moment(date).format("ll");
   };
@@ -14,27 +15,29 @@ const TableListLine = ({handleDispatch, linesLogs,linesProds,employees}) => {
           <tr>
             <th>Creado</th>
             <th>Empleado</th>
-            <th>Linea</th>
-            <th>Producto</th>
-            <th>Cantidad</th>
+            <th>Fecha</th>
+            <th>Descripcion</th>
+            <th>Tipo</th>
             <th>Estatus</th>
             <th></th>
           </tr>
         </thead>
         <tbody>
-           {linesLogs.length >= 1 ? (
-            linesLogs.map((value, index) => {
+           {empLogs.length >= 1 ? (
+            empLogs.map((value, index) => {
               return (
                 <tr key={index}>
                   <th scope="row">{handleChangeTime(value.created_at)}</th>
-                  <td>{value.employee_name}</td>
-                  <td>{value.line_name}</td>
-                  <td>{value.product_name}</td>
-                  <td>{value.count}</td>
+                  <td>{value.employee.name}</td>
+                  <td>{value.date}</td>
+                  <td>{value.description}</td>
+                  <td>{value.employee_scene.name}</td>
                   <td>{value.delete ? "Eliminado" : "Activo"}</td>
                   <td className="d-flex justify-content-between">
-                       <ModalEditLine handleDispatch={handleDispatch} linesProds={linesProds} employees={employees} data={value}/>
-                      <ModalDeleteLine handleDispatch={handleDispatch} data={value}/>
+                    <ModalEditEmployeesLogs handleDispatch={handleDispatch} employees={employees} data={value}/>
+                    <ModalDeleteEmployeeLogs handleDispatch={handleDispatch} data={value}/>
+                       {/* <ModalEditLine handleDispatch={handleDispatch} linesProds={linesProds} employees={employees} data={value}/>
+                      <ModalDeleteLine handleDispatch={handleDispatch} data={value}/> */}
                   </td>
                 </tr>
               );
@@ -50,4 +53,4 @@ const TableListLine = ({handleDispatch, linesLogs,linesProds,employees}) => {
   );
 };
 
-export default TableListLine;
+export default TableEmployeesLogs;

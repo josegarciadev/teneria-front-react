@@ -11,39 +11,40 @@ import {
   Input,
 } from "reactstrap";
 import axiosFetch from "../../../config/config";
-const ModalEditLine = ({handleDispatch,data,linesProds,employees}) => {
-    const [modal, setModal] = useState(false);
+const ModalEditEmployeesLogs = ({ handleDispatch, data, employees }) => {
+  const [modal, setModal] = useState(false);
 
-    const [form, setform] = useState(data);
-    const toggle = () => setModal(!modal);
-  
-    const handleChange = (e) => {
-      setform({
-        ...form,
-        [e.name]: e.value,
-      });
-    };
+  const [form, setform] = useState(data);
+  const toggle = () => setModal(!modal);
 
-    const handleUpdate = async (e) => {
-      await axiosFetch({
-        method: "patch",
-        url: "/admin/lineProdLog/update/" + data.id,
-        data: {
-          line_product_scenes_id: form.line_product_scenes_id,
-          employee_id:form.employee_id,
-          line_product_id:form.line_product_id,
-          count:form.count
-        },
-        headers: {
-          Authorization: "Bearer " + localStorage.getItem("user-token"),
-        },
+  const handleChange = (e) => {
+    setform({
+      ...form,
+      [e.name]: e.value,
+    });
+  };
+
+  const handleUpdate = async (e) => {
+    await axiosFetch({
+      method: "patch",
+      url: "/admin/employeeLogs/update/" + data.id,
+      data: {
+        employee_scene_id: form.employee_scene_id,
+        employee_id:form.employee_id,
+        description:form.description,
+        date:form.date,
+        delete:form.delete
+      },
+      headers: {
+        Authorization: "Bearer " + localStorage.getItem("user-token"),
+      },
+    })
+      .then((resp) => {
+        toggle();
+        handleDispatch();
       })
-        .then((resp) => {
-          toggle();
-          handleDispatch();
-        })
-        .catch((err) => {});
-    };
+      .catch((err) => {});
+  };
   return (
     <div>
       <button
@@ -54,11 +55,12 @@ const ModalEditLine = ({handleDispatch,data,linesProds,employees}) => {
         <i className="mdi mdi-border-color"></i>
       </button>
       <Modal isOpen={modal} toggle={toggle}>
-        <ModalHeader toggle={toggle}>Editar Entrada/Salida de linea</ModalHeader>
+        <ModalHeader toggle={toggle}>
+          Editar Entrada/Salida de linea
+        </ModalHeader>
         <ModalBody>
           <Form>
-  
-             <FormGroup>
+            <FormGroup>
               <Label for="exampleSelect">Empleado</Label>
               <Input
                 type="select"
@@ -68,46 +70,25 @@ const ModalEditLine = ({handleDispatch,data,linesProds,employees}) => {
                 onChange={(e) => handleChange(e.target)}
               >
                 <option value={0}>Seleccionar</option>
-                {
-                  employees.length>=1 && employees.map((value,index)=>{
-                    return(
+                {employees.length >= 1 &&
+                  employees.map((value, index) => {
+                    return (
                       <option value={value.id} key={index}>
-                        {value.name} 
-                        </option>
-                    )
-                  })
-                }
+                        {value.name}
+                      </option>
+                    );
+                  })}
               </Input>
-            </FormGroup> 
-            
+            </FormGroup>
+
             <FormGroup>
-              <Label for="exampleSelect">Linea Producto</Label>
+              <Label for="exampleSelect">Descripción</Label>
               <Input
                 type="select"
-                name="line_product_id"
+                name="employee_scene_id"
+                defaultValue={0}
                 id="exampleSelect"
-                value={form.line_product_id}
-                onChange={(e) => handleChange(e.target)}
-              >
-                <option value={0}>Seleccionar</option>
-                {
-                  linesProds.length>=1 && linesProds.map((value,index)=>{
-                    return(
-                      <option value={value.id} key={index}>
-                        {value.line_name} | {value.department_name}
-                        </option>
-                    )
-                  })
-                }
-              </Input>
-            </FormGroup>  
-            <FormGroup>
-              <Label for="exampleSelect">Tipo</Label>
-              <Input
-                type="select"
-                name="line_product_scenes_id"
-                value={form.line_product_scenes_id}
-                id="exampleSelect"
+                value={form.employee_scene_id}
                 onChange={(e) => handleChange(e.target)}
               >
                 <option value={0}>Seleccionar</option>
@@ -115,16 +96,16 @@ const ModalEditLine = ({handleDispatch,data,linesProds,employees}) => {
                 <option value={2}>Salida</option>
               </Input>
             </FormGroup>
-            
+
             <FormGroup>
-              <Label for="Stock">Cantidad</Label>
+              <Label for="Stock">Descripción</Label>
               <Input
-                type="number"
-                name="count"
+                type="text"
+                name="description"
                 id="Stock"
-                value={form.count}
+                value={form.description}
                 onChange={({ target }) => handleChange(target)}
-                placeholder="Agregar cantidad"
+                placeholder="Agregar Descripcion"
               />
             </FormGroup>
             <FormGroup>
@@ -155,4 +136,4 @@ const ModalEditLine = ({handleDispatch,data,linesProds,employees}) => {
   );
 };
 
-export default ModalEditLine;
+export default ModalEditEmployeesLogs;

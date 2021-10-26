@@ -1,3 +1,4 @@
+import moment from "moment";
 import React, { useState } from "react";
 import {
   Button,
@@ -12,14 +13,14 @@ import {
 } from "reactstrap";
 import axiosFetch from "../../../config/config";
 
-const ModalCreateLine = ({ handleDispatch,employees,linesProds }) => {
+const ModalCreateEmployeesLogs = ({ handleDispatch,employees,linesProds }) => {
   const [modal, setModal] = useState(false);
 
   const [form, setform] = useState({
-    count: "",
-    line_product_id: 0,
+
+    employee_scene_id: 0,
     employee_id:0,
-    line_product_scenes_id:0
+    description:''
   });
   const toggle = () => setModal(!modal);
 
@@ -33,22 +34,21 @@ const ModalCreateLine = ({ handleDispatch,employees,linesProds }) => {
 
   const handleClear = () => {
     setform({
-      count: "",
-    line_product_id: 0,
+    employee_scene_id: 0,
     employee_id:0,
-    line_product_scenes_id:0
+    description:''
     });
     toggle();
   };
   const handleNewUser = async (e) => {
     await axiosFetch({
       method: "post",
-      url: "/admin/lineProdLog/create",
+      url: "/admin/employeeLogs/create",
       data: {
-        line_product_scenes_id: form.line_product_scenes_id,
+        employee_scene_id: form.employee_scene_id,
         employee_id:form.employee_id,
-        line_product_id:form.line_product_id,
-        count:form.count
+        description:form.description,
+        date: moment()
       },
       headers: {
         Authorization: "Bearer " + localStorage.getItem("user-token"),
@@ -63,7 +63,7 @@ const ModalCreateLine = ({ handleDispatch,employees,linesProds }) => {
   return (
     <div>
       <Button color="primary" onClick={toggle}>
-        Nuevo registro
+        Nuevo registro Empleados
       </Button>
       <Modal isOpen={modal} toggle={toggle}>
         <ModalHeader toggle={toggle}>Agregar Registro Entrada/Salida</ModalHeader>
@@ -93,31 +93,10 @@ const ModalCreateLine = ({ handleDispatch,employees,linesProds }) => {
             </FormGroup> 
             
             <FormGroup>
-              <Label for="exampleSelect">Linea Producto</Label>
+              <Label for="exampleSelect">Descripción</Label>
               <Input
                 type="select"
-                name="line_product_id"
-                id="exampleSelect"
-                defaultValue={0}
-                onChange={(e) => handleChange(e.target)}
-              >
-                <option value={0}>Seleccionar</option>
-                {
-                  linesProds.length>=1 && linesProds.map((value,index)=>{
-                    return(
-                      <option value={value.id} key={index}>
-                        {value.line_name} | {value.department_name}
-                        </option>
-                    )
-                  })
-                }
-              </Input>
-            </FormGroup>  
-            <FormGroup>
-              <Label for="exampleSelect">Tipo</Label>
-              <Input
-                type="select"
-                name="line_product_scenes_id"
+                name="employee_scene_id"
                 defaultValue={0}
                 id="exampleSelect"
                 onChange={(e) => handleChange(e.target)}
@@ -129,13 +108,13 @@ const ModalCreateLine = ({ handleDispatch,employees,linesProds }) => {
             </FormGroup>
             
             <FormGroup>
-              <Label for="Stock">Cantidad</Label>
+              <Label for="Stock">Descripción</Label>
               <Input
-                type="number"
-                name="count"
+                type="text"
+                name="description"
                 id="Stock"
                 onChange={({ target }) => handleChange(target)}
-                placeholder="Agregar cantidad"
+                placeholder="Agregar Descripcion"
               />
             </FormGroup>
           </Form>
@@ -153,4 +132,4 @@ const ModalCreateLine = ({ handleDispatch,employees,linesProds }) => {
   );
 };
 
-export default ModalCreateLine;
+export default ModalCreateEmployeesLogs;

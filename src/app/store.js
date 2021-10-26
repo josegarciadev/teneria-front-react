@@ -1,6 +1,7 @@
 import { configureStore } from '@reduxjs/toolkit'
 import  DeparmentsSlice  from '../feactures/Departments/DepartmentsSlice'
 import EmployeeSlice from '../feactures/Employees/EmployeeSlice'
+import EmployeeLogsSlice from '../feactures/EmployeesLogs/EmployeeLogsSlice'
 import  LinesSlice  from '../feactures/Lines/Lines'
 import  LinesLogsSlice  from '../feactures/LinesLogs/LinesLogs'
 import  LinesProdsSlice  from '../feactures/LinesProds/LinesProds'
@@ -19,6 +20,7 @@ export const store = configureStore({
     productProvider:ProductProviderSlice,
     lines:LinesSlice,
     linesProds:LinesProdsSlice,
-    linesLogs:LinesLogsSlice
+    linesLogs:LinesLogsSlice,
+    employeesLogs:EmployeeLogsSlice
   },
 })

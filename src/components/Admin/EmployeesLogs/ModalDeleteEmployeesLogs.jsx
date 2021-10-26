@@ -8,7 +8,7 @@ import {
 } from "reactstrap";
 import axiosFetch from "../../../config/config";
 
-const ModalDeleteLine = ({ data,handleDispatch}) => {
+const ModalDeleteEmployeeLogs = ({ data,handleDispatch}) => {
     const [modal, setModal] = useState(false);
 
 
@@ -16,7 +16,7 @@ const ModalDeleteLine = ({ data,handleDispatch}) => {
     const handleUpdate = async (e) => {
       await axiosFetch({
         method: "delete",
-        url: "/admin/lineProdLog/delete/" + data.id,
+        url: "/admin/employeeLogs/delete/" + data.id,
         headers: {
           Authorization: "Bearer " + localStorage.getItem("user-token"),
         },
@@ -36,10 +36,7 @@ const ModalDeleteLine = ({ data,handleDispatch}) => {
       </button>
           <Modal isOpen={modal} toggle={toggle}>
             <ModalHeader toggle={toggle}>
-            Eliminar: 
-              <p className='p-0 m-0'>Linea= {data.line_name}</p>
-              <p className='p-0 m-0'>Producto={data.product_name}</p>
-              <p className='p-0 m-0'>Empleado={data.employee_name}</p>
+            Eliminar: {data.created_at} {data.employee.name} {data.employee_scene.name}
             </ModalHeader>
             <ModalBody>
              ¿Esta seguro de eliminar esta registro?
@@ -57,4 +54,4 @@ const ModalDeleteLine = ({ data,handleDispatch}) => {
       );
 }
 
-export default ModalDeleteLine
+export default ModalDeleteEmployeeLogs
