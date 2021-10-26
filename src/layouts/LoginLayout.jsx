@@ -1,7 +1,6 @@
 import React,{useEffect, useState} from 'react'
-//import { Redirect } from 'react-router'
 import axiosFetch from '../config/config'
-
+import {Link} from 'react-router-dom'
 const LoginLayout = (props) => {
 
     const [Form, setForm] = useState({
@@ -10,17 +9,16 @@ const LoginLayout = (props) => {
     })
     const handleLogin = async (e)=>{
         e.preventDefault();
-        await axiosFetch.post('/v1/user/login',Form).then(({data})=>{
-            console.log(data)
-            localStorage.setItem('user-token',JSON.stringify(data));
+        await axiosFetch.post('/user/login',Form).then(({data})=>{
+            localStorage.setItem('user-token',data.token);
+            localStorage.setItem('user',JSON.stringify(data));
+
             if(data.roles?.includes('admin')){
-
-                props.history.push('/dashboard')
-
-            }else if(data.roles?.includes('partner')){
-                console.log('partner')
+                props.history.push('/admin/dashboard')
+            }else if(data.roles?.includes('root')){
+                props.history.push('/ROOT/dashboard')
             }else if(data.roles?.includes('user')){
-                console.log('user')
+                props.history.push('/user/dashboard')
             }
         }).catch((error)=>{
             console.log(error)
@@ -33,7 +31,21 @@ const LoginLayout = (props) => {
             [e.target.name]:e.target.value
         })
     }
+    const handleCheckLogin = ()=>{
+        const user = JSON.parse(localStorage.getItem('user'));
+        
+        if(user && user.roles?.includes('admin'))
+        {
+            props.history.push('/admin/dashboard')
+        }else if(user && user.roles?.includes('root')){
+            props.history.push('/ROOT/dashboard')
+        }else if(user && user.roles?.includes('user')){
+            props.history.push('/user/dashboard')
+        }
+        
+    }
     useEffect(() => {
+        handleCheckLogin();
     }, [])
     return (
         <section className="container d-flex  flex-column justify-content-center " style={{ height: '100vh' }}>
@@ -65,11 +77,11 @@ const LoginLayout = (props) => {
                                     <label className="checkbox-wrap checkbox-primary px-2">
                                         Recuerdame
                                     </label>
-                                    <input type="checkbox" checked />
+                                    <input type="checkbox" />
                                     <span className="checkmark "></span>
                                 </div>
                                 <div className="w-50 text-md-right">
-                                    <a href="#">¿Olvidaste la contraseña?</a>
+                                    <Link to='/'>¿Olvidaste la contraseña?</Link>
                                 </div>
                             </div>
                         </form>
@@ -77,7 +89,7 @@ const LoginLayout = (props) => {
                 </div>
             </div>
             <div className="text-center">
-                <p>¿No tienes cuenta? <a href="#">Registrate</a></p>
+                <p>¿No tienes cuenta? <a>Registrate</a></p>
             </div>
 
         </section>
