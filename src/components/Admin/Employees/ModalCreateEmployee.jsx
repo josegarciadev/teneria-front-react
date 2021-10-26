@@ -1,4 +1,4 @@
-import React,{useState} from "react";
+import React, { useState } from "react";
 import {
   Button,
   Modal,
@@ -15,34 +15,51 @@ import axiosFetch from "../../../config/config";
 const ModalCreateEmployee = ({ handleDispatch, departments }) => {
   const [modal, setModal] = useState(false);
 
-  const [formDep, setformDep] = useState({
+  const [formEmpl, setformEmpl] = useState({
+    dni: "",
     name: "",
-    description: "",
+    date_birth: "",
+    ingress:'',
+    address:'',
+    gender_id:0,
+    phone_number:0,
+    department_id:0
   });
   const toggle = () => setModal(!modal);
 
   const handleChange = (e) => {
-    console.log(e);
-    setformDep({
-      ...formDep,
+    setformEmpl({
+      ...formEmpl,
       [e.name]: e.value,
     });
   };
 
   const handleClear = () => {
-    setformDep({
-      name: "",
-      description: "",
+    setformEmpl({
+      dni: "",
+    name: "",
+    date_birth: "",
+    ingress:'',
+    address:'',
+    gender_id:0,
+    phone_number:0,
+    department_id:0
     });
     toggle();
   };
   const handleNewUser = async (e) => {
     await axiosFetch({
       method: "post",
-      url: "/admin/department/create",
+      url: "/admin/employee/create",
       data: {
-        description: formDep.description,
-        name: formDep.name,
+        dni: formEmpl.dni,
+        name: formEmpl.name,
+        date_birth: formEmpl.date_birth,
+        ingress:formEmpl.ingress,
+        address:formEmpl.address,
+        gender_id:formEmpl.gender_id,
+        phone_number:formEmpl.phone_number,
+        department_id:formEmpl.department_id
       },
       headers: {
         Authorization: "Bearer " + localStorage.getItem("user-token"),
@@ -60,10 +77,10 @@ const ModalCreateEmployee = ({ handleDispatch, departments }) => {
         Nuevo Empleado
       </Button>
       <Modal isOpen={modal} toggle={toggle}>
-        <ModalHeader toggle={toggle}>Agregar Nuevo Departamento</ModalHeader>
+        <ModalHeader toggle={toggle}>Agregar Nuevo Empleado</ModalHeader>
         <ModalBody>
           <Form>
-          <FormGroup>
+            <FormGroup>
               <Label for="DNI">DNI</Label>
               <Input
                 type="text"
@@ -122,20 +139,38 @@ const ModalCreateEmployee = ({ handleDispatch, departments }) => {
               />
             </FormGroup>
             <FormGroup>
-              <Label for="exampleSelect">Select</Label>
+              <Label for="exampleSelect">Genero</Label>
               <Input
                 type="select"
-                name="delete"
+                name="gender_id"
                 id="exampleSelect"
                 onChange={(e) => handleChange(e.target)}
+                defaultValue={0}
               >
-                  {
-                      departments.length>=1 && departments.map((value,index)=>{
-                          return(
-                            <option value={value.id} key={index}> {value.name} </option>
-                          )
-                      })
-                  }
+                <option value={0}>Seleccionar</option>
+                <option value={1}>Hombre</option>
+                <option value={2}>Mujer</option>
+              </Input>
+            </FormGroup>
+            <FormGroup>
+              <Label for="exampleSelect">Department</Label>
+              <Input
+                type="select"
+                name="department_id"
+                id="exampleSelect"
+                onChange={(e) => handleChange(e.target)}
+                defaultValue={0}
+              >
+                <option value={0}>Seleccionar</option>
+                {departments.length >= 1 &&
+                  departments.map((value, index) => {
+                    return (
+                      <option value={value.id} key={index}>
+                        {" "}
+                        {value.name}{" "}
+                      </option>
+                    );
+                  })}
               </Input>
             </FormGroup>
           </Form>

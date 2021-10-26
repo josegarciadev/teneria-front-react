@@ -11,7 +11,12 @@ import LayoutComponent from '../views/ui-components/layout.jsx';
 import PaginationComponent from '../views/ui-components/pagination.jsx';
 import PopoverComponent from '../views/ui-components/popover.jsx';
 import TooltipComponent from '../views/ui-components/tooltip.jsx';
-
+import Products from '../views/Admin/Products/Products.jsx';
+import Providers from '../views/Admin/Providers/Providers.jsx';
+import ProducProviders from '../views/Admin/ProductProviders/ProducProviders.jsx';
+import Lines from '../views/Admin/Lines/Lines.jsx';
+import LinesProds from '../views/Admin/LinesProds/LinesProds.jsx';
+import LinesLogs from '../views/Admin/LinesLogs/LinesLogs.jsx';
 
 var ThemeRoutesAdmin = [
   { 
@@ -32,53 +37,41 @@ var ThemeRoutesAdmin = [
     icon: 'ti-loop', 
     component: Employees
   },
-  {
-    path: '/admin/dashboard/alert',
-    name: 'Alerts',
-    icon: 'mdi mdi-comment-processing-outline',
-    component: Alerts
+  { 
+    path: '/admin/dashboard/lineasLogs', 
+    name: 'Entradas/Salidas de Lineas', 
+    icon: 'ti-loop', 
+    component: LinesLogs
+  },
+  { 
+    path: '/admin/dashboard/line', 
+    name: 'Lineas', 
+    icon: 'ti-loop', 
+    component: Lines
+  },
+  { 
+    path: '/admin/dashboard/lineprods', 
+    name: 'Lineas Productos', 
+    icon: 'ti-loop', 
+    component: LinesProds
   },
   {
-    path: '/admin/dashboard/badge',
-    name: 'Badges',
-    icon: 'mdi mdi-arrange-send-backward',
-    component: Badges
+    path: '/admin/dashboard/products',
+    name: 'Product',
+    icon: 'mdi mdi-account',
+    component: Products
   },
   {
-    path: '/admin/dashboard/button',
-    name: 'Buttons',
-    icon: 'mdi mdi-toggle-switch',
-    component: Buttons
+    path: '/admin/dashboard/providers',
+    name: 'Provider',
+    icon: 'mdi mdi-account',
+    component: Providers
   },
   {
-    path: '/admin/dashboard/card',
-    name: 'Cards',
-    icon: 'mdi mdi-credit-card-multiple',
-    component: Cards
-  },
-  {
-    path: '/admin/dashboard/grid',
-    name: 'Grid',
-    icon: 'mdi mdi-apps',
-    component: LayoutComponent
-  },
-  {
-    path: '/admin/dashboard/pagination',
-    name: 'Pagination',
-    icon: 'mdi mdi-priority-high',
-    component: PaginationComponent
-  },
-  {
-    path: '/admin/dashboard/popover',
-    name: 'Popover',
-    icon: 'mdi mdi-pencil-circle',
-    component: PopoverComponent
-  },
-  {
-    path: '/admin/dashboard/ui-components/tooltip',
-    name: 'Toltips',
-    icon: 'mdi mdi-image-filter-vintage',
-    component: TooltipComponent
+    path: '/admin/dashboard/prodprovs',
+    name: 'Producto Provider',
+    icon: 'mdi mdi-account',
+    component: ProducProviders
   },
   {
     path: '/admin/dashboard/users',

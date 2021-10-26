@@ -101,7 +101,7 @@ const ModalEditUser = ({ title, handleDispatch, user }) => {
               />
             </FormGroup>
             <FormGroup>
-              <Label for="exampleSelect">Select</Label>
+              <Label for="exampleSelect">Estado</Label>
               <Input
                 type="select"
                 name="delete"
