@@ -10,6 +10,7 @@ import LoginLayout from './layouts/LoginLayout.jsx';
 import { store } from './app/store'
 import { Provider } from 'react-redux'
 import { HomeLayout } from './layouts/HomeLayout.jsx';
+import { CatalogueLayout } from './layouts/CatalogueLayout.jsx';
 
 /* {indexRoutes.map((prop, key) => {
   return <Route path={prop.path} key={key} component={prop.component} />;
@@ -24,6 +25,7 @@ ReactDOM.render(
     })} */}
         <Route exact path='/' component={HomeLayout} />
         <Route exact path='/login' component={LoginLayout} />
+        <Route exact path='/catalogue' component={CatalogueLayout} />
         <AdminRoutes />
       </Switch>
 

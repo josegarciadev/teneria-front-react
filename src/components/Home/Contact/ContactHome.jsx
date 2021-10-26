@@ -1,6 +1,7 @@
 import React from "react";
 import styles from "./Contact.module.css";
 import logo1 from "./images/logo1.png";
+import qr from "./images/qr.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faFacebookSquare, faTwitterSquare, faInstagramSquare
@@ -52,6 +53,10 @@ const ContactHome = () => {
                 className={`${styles.twitter}`}
               /></a>
             </div>
+
+            <div className={`${styles.qr} d-flex justify-content-center`}>
+                <img src={qr} alt="" />
+              </div>
           </div>
         </div>
         <div className="row">
