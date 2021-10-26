@@ -3,13 +3,14 @@ import { Route, Switch, Redirect } from 'react-router-dom';
 import Header from '../components/header/header.jsx';
 import Sidebar from '../components/sidebar/sidebar.jsx';
 import Footer from '../components/footer/footer.jsx';
-import ThemeRoutes from '../routes/routing.jsx';
+import {ThemeRoutesAdmin, ThemeRoutesUser,ThemeRoutesRoot} from '../routes/routing.jsx';
 
 const Fulllayout = (props) => {
     /*--------------------------------------------------------------------------------*/
     /*Change the layout settings [HEADER,SIDEBAR && DARK LAYOUT] from here            */
     /*--------------------------------------------------------------------------------*/
     const [width, setWidth] = useState(window.innerWidth);
+    const token = JSON.parse(localStorage.getItem('user'));
 
     props.history.listen((location, action) => {
         if (
@@ -70,23 +71,60 @@ const Fulllayout = (props) => {
             {/*--------------------------------------------------------------------------------*/}
             {/* Sidebar                                                                        */}
             {/*--------------------------------------------------------------------------------*/}
-            <Sidebar {...props} routes={ThemeRoutes} />
+
+                        { 
+                            token && token.roles?.includes('admin') ? <Sidebar {...props} routes={ThemeRoutesAdmin} />
+                            :
+                            token && token.roles?.includes('root') ? <Sidebar {...props} routes={ThemeRoutesRoot} />
+                            :
+                            token && token.roles?.includes('user') ? <Sidebar {...props} routes={ThemeRoutesUser} />
+                            :
+                            <Redirect to='/login'/>
+                        }
+
+            
             {/*--------------------------------------------------------------------------------*/}
             {/* Page Main-Content                                                              */}
             {/*--------------------------------------------------------------------------------*/}
             <div className="page-wrapper d-block">
                 <div className="page-content container-fluid">
+                    
                     <Switch>
-                        {ThemeRoutes.map((prop, key) => {
+                        { token && token.roles?.includes('admin') ? ThemeRoutesAdmin.map((prop, key) => {
                             if (prop.redirect) {
                                 return <Redirect from={prop.path} to={prop.pathTo} key={key} />;
                             }
                             else {
                                 return (
-                                    <Route path={prop.path} component={prop.component} key={key} />
+                                    <Route path={prop.path} exact component={prop.component} key={key} />
                                 );
                             }
-                        })}
+                        }):
+                            token && token.roles?.includes('user') ? ThemeRoutesUser.map((prop, key) => {
+                            if (prop.redirect) {
+                                return <Redirect from={prop.path} to={prop.pathTo} key={key} />;
+                            }
+                            else {
+                                return (
+                                    <Route path={prop.path} exact component={prop.component} key={key} />
+                                );
+                            }
+                            })
+                            :
+                            token && token.roles?.includes('root') ? ThemeRoutesRoot.map((prop, key) => {
+                                if (prop.redirect) {
+                                    return <Redirect from={prop.path} to={prop.pathTo} key={key} />;
+                                }
+                                else {
+                                    return (
+                                        <Route path={prop.path} exact component={prop.component} key={key} />
+                                    );
+                                }
+                                })
+                                :
+                            <Redirect to='/login'/>
+                        }
+                        
                     </Switch>
                 </div>
                 <Footer />
