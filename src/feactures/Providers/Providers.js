@@ -1,12 +1,12 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axiosFetch from "../../config/config";
 
-export const getEmployees = createAsyncThunk(
-  "employee/getEmployees", 
+export const getProviders = createAsyncThunk(
+  "provider/getProviders", 
   async () => {
     const users = await axiosFetch({
       method: "get",
-      url: "/logs/employee/all",
+      url: "/admin/provider/all",
       headers:{
         Authorization: 'Bearer ' + localStorage.getItem('user-token')
       }
@@ -16,28 +16,31 @@ export const getEmployees = createAsyncThunk(
     return users;
 });
 
+
 const initialState = {
-  employees: [],
+  providers: [
+
+  ],
   loading: false,
 };
 
-export const EmployeeSlice = createSlice({
-  name: "employee",
+export const ProviderSlice = createSlice({
+  name: "provider",
   initialState,
   extraReducers: {
-    [getEmployees.pending]: (state) => {
+    [getProviders.pending]: (state) => {
       state.loading = true;
     },
-    [getEmployees.fulfilled]: (state, { payload }) => {
+    [getProviders.fulfilled]: (state, { payload }) => {
       state.loading = false;
-      state.employees = payload;
+      state.providers = payload;
     },
-    [getEmployees.rejected]: (state) => {
+    [getProviders.rejected]: (state) => {
       state.loading = false;
     },
   },
 });
 
-export const selectEmployees= state => state.employee.employees;
+export const selectProvider= state => state.provider.providers;
 
-export default EmployeeSlice.reducer;
+export default ProviderSlice.reducer;

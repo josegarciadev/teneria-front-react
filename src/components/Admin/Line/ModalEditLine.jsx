@@ -11,42 +11,34 @@ import {
   Input,
 } from "reactstrap";
 import axiosFetch from "../../../config/config";
-const ModalEditDepartment = ({handleDispatch,department}) => {
+const ModalEditLine = ({handleDispatch,data, departments}) => {
     const [modal, setModal] = useState(false);
 
-    const [formDep, setformDep] = useState(department);
+    const [form, setform] = useState(data);
     const toggle = () => setModal(!modal);
   
     const handleChange = (e) => {
-      console.log(e);
-      setformDep({
-        ...formDep,
+      setform({
+        ...form,
         [e.name]: e.value,
       });
     };
-  
-    const handleClear = () => {
-      setformDep({
-        name: "",
-        password: "",
-        email: "",
-      });
-      toggle();
-    };
+
     const handleUpdate = async (e) => {
       await axiosFetch({
         method: "patch",
-        url: "/admin/department/update/" + department.id,
+        url: "/admin/line/update/" + data.id,
         data: {
-            description:formDep.description,
-            name:formDep.name,
+          department_id:form.department_id,
+            name:form.line_name,
+            delete:form.delete
         },
         headers: {
           Authorization: "Bearer " + localStorage.getItem("user-token"),
         },
       })
         .then((resp) => {
-          handleClear();
+          toggle();
           handleDispatch();
         })
         .catch((err) => {});
@@ -68,30 +60,40 @@ const ModalEditDepartment = ({handleDispatch,department}) => {
               <Label for="Name">Nombre</Label>
               <Input
                 type="text"
-                name="name"
+                name="line_name"
                 id="Name"
-                value={formDep.name}
+                value={form.line_name}
                 onChange={({ target }) => handleChange(target)}
                 placeholder="Agregar Nombre"
               />
             </FormGroup>
             <FormGroup>
-              <Label for="Description">Descripciòn</Label>
+              <Label for="exampleSelect">Departamento</Label>
               <Input
-                type="textarea"
-                name="description"
-                id="Description"
-                value={formDep.description}
-                onChange={({ target }) => handleChange(target)}
-                placeholder="Ingrese una descripciòn"
-              />
+                type="select"
+                name="department_id"
+                id="exampleSelect"
+                value={form.department_id}
+                onChange={(e) => handleChange(e.target)}
+              >
+                <option value={0}>Seleccionar</option>
+                {
+                  departments.length>=1 && departments.map((value,index)=>{
+                    return(
+                      <option value={value.id} key={index}>
+                        {value.name}
+                        </option>
+                    )
+                  })
+                }
+              </Input>
             </FormGroup>
             <FormGroup>
               <Label for="exampleSelect">Estado</Label>
               <Input
                 type="select"
                 name="delete"
-                value={formDep.delete}
+                value={form.delete}
                 id="exampleSelect"
                 onChange={(e) => handleChange(e.target)}
               >
@@ -114,4 +116,4 @@ const ModalEditDepartment = ({handleDispatch,department}) => {
   );
 };
 
-export default ModalEditDepartment;
+export default ModalEditLine;

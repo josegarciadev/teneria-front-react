@@ -68,10 +68,10 @@ const Header = (props) => {
                     <Link to=''> <i className="fa fa-power-off mr-1 ml-1" /> Cerrar Sesión</Link>
                   
                 </DropdownItem>
-                <DropdownItem divider />
+                {/* <DropdownItem divider />
                 <Button color="success" className="btn-rounded ml-3 mb-2 mt-2">
                   Ver Perfil
-                </Button>
+                </Button> */}
               </DropdownMenu>
             </UncontrolledDropdown>
             {/*--------------------------------------------------------------------------------*/}

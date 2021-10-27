@@ -1,12 +1,12 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axiosFetch from "../../config/config";
 
-export const getEmployees = createAsyncThunk(
-  "employee/getEmployees", 
+export const getEmployeesLogs = createAsyncThunk(
+  "employees/getEmployeesLogs", 
   async () => {
     const users = await axiosFetch({
       method: "get",
-      url: "/logs/employee/all",
+      url: "/logs/employeeLogs/all",
       headers:{
         Authorization: 'Bearer ' + localStorage.getItem('user-token')
       }
@@ -17,27 +17,27 @@ export const getEmployees = createAsyncThunk(
 });
 
 const initialState = {
-  employees: [],
+  employeesLogs: [],
   loading: false,
 };
 
-export const EmployeeSlice = createSlice({
-  name: "employee",
+export const EmployeeSLogslice = createSlice({
+  name: "employees",
   initialState,
   extraReducers: {
-    [getEmployees.pending]: (state) => {
+    [getEmployeesLogs.pending]: (state) => {
       state.loading = true;
     },
-    [getEmployees.fulfilled]: (state, { payload }) => {
+    [getEmployeesLogs.fulfilled]: (state, { payload }) => {
       state.loading = false;
-      state.employees = payload;
+      state.employeesLogs = payload;
     },
-    [getEmployees.rejected]: (state) => {
+    [getEmployeesLogs.rejected]: (state) => {
       state.loading = false;
     },
   },
 });
 
-export const selectEmployees= state => state.employee.employees;
+export const selectEmployeesLogs= state => state.employees.employeesLogs;
 
-export default EmployeeSlice.reducer;
+export default EmployeeSLogslice.reducer;

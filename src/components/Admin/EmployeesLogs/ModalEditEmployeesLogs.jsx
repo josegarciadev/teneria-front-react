@@ -11,43 +11,36 @@ import {
   Input,
 } from "reactstrap";
 import axiosFetch from "../../../config/config";
-const ModalEditUser = ({ title, handleDispatch, user }) => {
+const ModalEditEmployeesLogs = ({ handleDispatch, data, employees }) => {
   const [modal, setModal] = useState(false);
 
-  const [formUser, setFormUser] = useState(user);
+  const [form, setform] = useState(data);
   const toggle = () => setModal(!modal);
 
   const handleChange = (e) => {
-    console.log(e);
-    setFormUser({
-      ...formUser,
+    setform({
+      ...form,
       [e.name]: e.value,
     });
   };
 
-  const handleClear = () => {
-    setFormUser({
-      name: "",
-      password: "",
-      email: "",
-    });
-    toggle();
-  };
   const handleUpdate = async (e) => {
     await axiosFetch({
       method: "patch",
-      url: "/admin/user/update/" + user.id,
+      url: "/logs/employeeLogs/update/" + data.id,
       data: {
-        email: formUser.email,
-        name: formUser.name,
-        password: formUser.password,
+        employee_scene_id: form.employee_scene_id,
+        employee_id:form.employee_id,
+        description:form.description,
+        date:form.date,
+        delete:form.delete
       },
       headers: {
         Authorization: "Bearer " + localStorage.getItem("user-token"),
       },
     })
       .then((resp) => {
-        handleClear();
+        toggle();
         handleDispatch();
       })
       .catch((err) => {});
@@ -63,41 +56,56 @@ const ModalEditUser = ({ title, handleDispatch, user }) => {
       </button>
       <Modal isOpen={modal} toggle={toggle}>
         <ModalHeader toggle={toggle}>
-          {title} {user.name}
+          Editar Entrada/Salida de linea
         </ModalHeader>
         <ModalBody>
           <Form>
             <FormGroup>
-              <Label for="Name">Nombre</Label>
+              <Label for="exampleSelect">Empleado</Label>
+              <Input
+                type="select"
+                name="employee_id"
+                id="exampleSelect"
+                value={form.employee_id}
+                onChange={(e) => handleChange(e.target)}
+              >
+                <option value={0}>Seleccionar</option>
+                {employees.length >= 1 &&
+                  employees.map((value, index) => {
+                    return (
+                      <option value={value.id} key={index}>
+                        {value.name}
+                      </option>
+                    );
+                  })}
+              </Input>
+            </FormGroup>
+
+            <FormGroup>
+              <Label for="exampleSelect">Descripción</Label>
+              <Input
+                type="select"
+                name="employee_scene_id"
+                defaultValue={0}
+                id="exampleSelect"
+                value={form.employee_scene_id}
+                onChange={(e) => handleChange(e.target)}
+              >
+                <option value={0}>Seleccionar</option>
+                <option value={1}>Entrada</option>
+                <option value={2}>Salida</option>
+              </Input>
+            </FormGroup>
+
+            <FormGroup>
+              <Label for="Stock">Descripción</Label>
               <Input
                 type="text"
-                name="name"
-                id="Name"
-                value={formUser.name}
+                name="description"
+                id="Stock"
+                value={form.description}
                 onChange={({ target }) => handleChange(target)}
-                placeholder="Agregar Nombre"
-              />
-            </FormGroup>
-            <FormGroup>
-              <Label for="Email">Email</Label>
-              <Input
-                type="email"
-                name="email"
-                id="Email"
-                value={formUser.email}
-                onChange={({ target }) => handleChange(target)}
-                placeholder="usuario@test.com"
-              />
-            </FormGroup>
-            <FormGroup>
-              <Label for="Password">Contraseña</Label>
-              <input
-                className="form-control"
-                type="password"
-                name="password"
-                id="Password"
-                onChange={(e) => handleChange(e.target)}
-                placeholder="Ingrese una contraseña"
+                placeholder="Agregar Descripcion"
               />
             </FormGroup>
             <FormGroup>
@@ -105,7 +113,7 @@ const ModalEditUser = ({ title, handleDispatch, user }) => {
               <Input
                 type="select"
                 name="delete"
-                value={formUser.delete}
+                value={form.delete}
                 id="exampleSelect"
                 onChange={(e) => handleChange(e.target)}
               >
@@ -128,4 +136,4 @@ const ModalEditUser = ({ title, handleDispatch, user }) => {
   );
 };
 
-export default ModalEditUser;
+export default ModalEditEmployeesLogs;

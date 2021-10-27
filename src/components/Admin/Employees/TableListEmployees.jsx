@@ -1,8 +1,10 @@
 import React from 'react'
 import { Table } from "reactstrap";
 import moment from "moment";
+import ModalEditEmploye from './ModalEditEmploye';
+import ModalDeleteEmployee from './ModalDeleteEmployee';
 
-const TableListEmployees = ({handleDispatch,employees}) => {
+const TableListEmployees = ({handleDispatch,employees,departments}) => {
     const handleChangeTime = (date) => {
         return moment(date).format("ll");
       };
@@ -32,7 +34,8 @@ const TableListEmployees = ({handleDispatch,employees}) => {
                       <td>{emp.department.name}</td>
                       <td>{emp.delete ? "Eliminado" : "Activo"}</td>
                       <td className="d-flex justify-content-between">
- 
+                          <ModalEditEmploye handleDispatch={handleDispatch} departments={departments} employees={emp}/>
+                          <ModalDeleteEmployee handleDispatch={handleDispatch} employee={emp}  />
                       </td>
                     </tr>
                   );
