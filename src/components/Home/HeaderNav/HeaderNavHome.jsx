@@ -1,8 +1,6 @@
 import React from "react";
 import styles from "./HeaderNav.module.css";
-//import img1 from "./images/img1.jpg";
 import logo from "./images/logo.png";
-import ReactPlayer from "react-player";
 
 const HeaderNav = () => {
   return (
@@ -12,8 +10,9 @@ const HeaderNav = () => {
           className={`navbar navbar-expand-lg navbar-light ${styles.background_nav}`}
         >
           <img src={logo} alt="" className={`${styles.img_icon}`} />
-          <a className="navbar-brand" href="/">
-            Navbar
+          
+          <a className="navbar-brand" href="/#teneria">
+            Teneria Rubio C.A
           </a>
           <button
             className="navbar-toggler"
@@ -29,66 +28,48 @@ const HeaderNav = () => {
 
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <ul className="navbar-nav mr-auto">
-              <li className="nav-item active">
-                <a className="nav-link" href="/">
-                  Home <span className="sr-only">(current)</span>
+              <li className="nav-item">
+                <a className="nav-link" href="/#AboutUs">
+                ¿Quienes Somos? 
                 </a>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="/">
-                  Link
+                <a className="nav-link" href="/#VisionMission">
+                  Vision y Mision
                 </a>
-              </li>
-              <li className="nav-item dropdown">
-                <a
-                  className="nav-link dropdown-toggle"
-                  href="/"
-                  id="navbarDropdown"
-                  role="button"
-                  data-toggle="dropdown"
-                  aria-haspopup="true"
-                  aria-expanded="false"
-                >
-                  Dropdown
-                </a>
-                <div className="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <a className="dropdown-item" href="/">
-                    Action
-                  </a>
-                  <a className="dropdown-item" href="/">
-                    Another action
-                  </a>
-                  <div className="dropdown-divider"></div>
-                  <a className="dropdown-item" href="/">
-                    Something else here
-                  </a>
-                </div>
               </li>
               <li className="nav-item">
-                <a
-                  className="nav-link disabled"
-                  href="/"
-                  tabIndex="-1"
-                  aria-disabled="true"
-                >
-                  Disabled
+                <a className="nav-link" href="/#objective">
+                  Ojetivo General
                 </a>
               </li>
+
+              <li className="nav-item">
+                <a className="nav-link" href="/#products">
+                 ¿Nuestros Productos?
+                </a>
+              </li>
+
+              <li className="nav-item">
+                <a className="nav-link" href="/#contact">
+                 Contacto
+                </a>
+              </li>
+
+              <li className="nav-item">
+                <a className="nav-link" href="/#followUs">
+                 Siguenos
+                </a>
+              </li>
+
+
+              <li className={`${styles.login} nav-item`}>
+                <a className="nav-link" href="/login">
+                 Login
+                </a>
+              </li>
+            
             </ul>
-            <form className="form-inline my-2 my-lg-0">
-              <input
-                className="form-control mr-sm-2"
-                type="search"
-                placeholder="Search"
-                aria-label="Search"
-              />
-              <button
-                className="btn btn-outline-success my-2 my-sm-0"
-                type="submit"
-              >
-                Search
-              </button>
-            </form>
           </div>
         </nav>
       </header>

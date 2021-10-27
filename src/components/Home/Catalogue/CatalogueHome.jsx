@@ -145,14 +145,6 @@ const CatalogueHome = () => {
             </div>
           </div>
         </div>
-
-        <div className="row">
-          <div className="col-12 d-flex justify-content-center">
-            <p className={`${styles.footer}`}>
-              Teneria Rubio 2021 | Rubio, Estado Tachira - Venezuela
-            </p>
-          </div>
-        </div>
       </div>
     </>
   );
