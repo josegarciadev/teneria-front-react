@@ -13,6 +13,7 @@
         "bootstrap": "4.1.3",
         "chart.js": "2.7.2",
         "history": "4.7.2",
+        "moment": "^2.29.1",
         "node-sass": "^4.12.0",
         "react": "^16.8.3",
         "react-chartjs-2": "^2.7.4",
@@ -42,5 +43,8 @@
             "last 1 firefox version",
             "last 1 safari version"
         ]
+    },
+    "devDependencies": {
+        "@types/reactstrap": "^8.7.2"
     }
 }
