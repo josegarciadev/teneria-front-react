@@ -65,19 +65,19 @@ var ThemeRoutesAdmin = [
   },
   {
     path: '/admin/dashboard/products',
-    name: 'Product',
+    name: 'Productos',
     icon: 'mdi mdi-account',
     component: Products
   },
   {
     path: '/admin/dashboard/providers',
-    name: 'Provider',
+    name: 'Proveedores',
     icon: 'mdi mdi-account',
     component: Providers
   },
   {
     path: '/admin/dashboard/prodprovs',
-    name: 'Producto Provider',
+    name: 'Producto Proveedor',
     icon: 'mdi mdi-account',
     component: ProducProviders
   },

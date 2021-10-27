@@ -17,6 +17,7 @@ const TableListLine = ({handleDispatch, linesLogs,linesProds,employees}) => {
             <th>Linea</th>
             <th>Producto</th>
             <th>Cantidad</th>
+            <th>Tipo</th>
             <th>Estatus</th>
             <th></th>
           </tr>
@@ -31,6 +32,7 @@ const TableListLine = ({handleDispatch, linesLogs,linesProds,employees}) => {
                   <td>{value.line_name}</td>
                   <td>{value.product_name}</td>
                   <td>{value.count}</td>
+                  <td>{value.type}</td>
                   <td>{value.delete ? "Eliminado" : "Activo"}</td>
                   <td className="d-flex justify-content-between">
                        <ModalEditLine handleDispatch={handleDispatch} linesProds={linesProds} employees={employees} data={value}/>

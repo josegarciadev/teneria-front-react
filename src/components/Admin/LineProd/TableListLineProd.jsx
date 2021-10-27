@@ -35,7 +35,7 @@ const TableListLine = ({prods, lines ,handleDispatch, linesprods}) => {
                   <td>{value.stock}</td>
                   <td>{value.delete ? "Eliminado" : "Activo"}</td>
                   <td className="d-flex justify-content-between">
-                      <ModalEditLine handleDispatch={handleDispatch}  data={value}/>
+                      <ModalEditLine handleDispatch={handleDispatch} prods={prods} lines={lines}  data={value}/>
                       <ModalDeleteLine handleDispatch={handleDispatch} data={value}/>
                   </td>
                 </tr>

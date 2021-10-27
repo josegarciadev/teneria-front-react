@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Card, CardBody, CardTitle, Row, Col } from "reactstrap";
 import ModalCreateLineProd from "../../../components/Admin/LineProd/ModalCreateLineProd";
 import TableListLineProd from "../../../components/Admin/LineProd/TableListLineProd";
+import ButtonExport from "../../../components/ButtonExport/ButtonExport";
 import axiosFetch from "../../../config/config";
 import { getLines,selectLines} from "../../../feactures/Lines/Lines";
 import { getLinesProds,selectLinesProds} from "../../../feactures/LinesProds/LinesProds";
@@ -39,8 +40,9 @@ const LinesProds = () => {
               Lineas Productos
             </CardTitle>
             <CardBody>
-              <div className="py-2">
+            <div className="py-2 d-flex justify-content-between">
                 <ModalCreateLineProd handleDispatch={handleDispatch} prods={prods} lines={lines}/>
+                <ButtonExport url='http://127.0.0.1:8000/api/v1/PDF/linesProductsPdf' />
               </div>
 
               <TableListLineProd handleDispatch={handleDispatch}  prods={prods}  lines={lines} linesprods={linesProd} />

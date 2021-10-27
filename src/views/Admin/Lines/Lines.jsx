@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Card, CardBody, CardTitle, Row, Col } from "reactstrap";
 import ModalCreateLine from "../../../components/Admin/Line/ModalCreateLine";
 import TableListLine from "../../../components/Admin/Line/TableListLine";
+import ButtonExport from "../../../components/ButtonExport/ButtonExport";
 import { getDeparments,selectDeparments } from "../../../feactures/Departments/DepartmentsSlice";
 import { getLines,selectLines} from "../../../feactures/Lines/Lines";
 
@@ -28,8 +29,9 @@ const Lines = () => {
               Lineas
             </CardTitle>
             <CardBody>
-              <div className="py-2">
+              <div className="py-2 d-flex justify-content-between">
                 <ModalCreateLine handleDispatch={handleDispatch}  departments={deps}/>
+                <ButtonExport url='http://127.0.0.1:8000/api/v1/PDF/linesPdf' />
               </div>
 
               <TableListLine handleDispatch={handleDispatch}  departments={deps} lines={data} />
