@@ -1,49 +1,43 @@
-import React from 'react';
+import React, { useState,useEffect } from 'react';
 import {
     Card,
-    CardImg,
     CardText,
     CardBody,
     CardTitle,
-    CardSubtitle,
-    Button,
     Row,
     Col
 } from 'reactstrap';
-import { SalesSummary, Projects, Feeds } from 'components/dashboard-components';
 
-import img1 from '../../assets/images/big/img1.jpg';
-import img2 from '../../assets/images/big/img2.jpg';
-import img3 from '../../assets/images/big/img3.jpg';
+import axiosFetch from '../../config/config';
 
 const Starter = () => {
+    const [data, setdata] = useState({})
+
+    const handleFetch = async ()=>{
+        await axiosFetch({
+            method:'get',
+            url:'statistics/getAll'
+        }).then((res)=>{
+            setdata(res.data)
+        })
+    }
+    useEffect(() => {
+        handleFetch();
+    }, [])
     return (
         <div>
-            <Row>
-                <Col sm={6} lg={8}>
-                    <SalesSummary />
-                </Col>
-                <Col sm={6} lg={4}>
-                    <Feeds />
-                </Col>
-            </Row>
-            <Row>
-                <Col sm={12}>
-                    <Projects />
-                </Col>
-            </Row>
+            
             <Row>
                 <Col xs="12" md="4">
                     {/*--------------------------------------------------------------------------------*/}
                     {/*Card-1*/}
                     {/*--------------------------------------------------------------------------------*/}
                     <Card>
-                        <CardImg top width="100%" src={img1} />
+                    <CardTitle className="bg-light border-bottom p-3 mb-0 text-center"> <i class="mdi mdi-account-alert"></i> Usuarios</CardTitle>
                         <CardBody>
-                            <CardTitle>Card title</CardTitle>
-                            <CardSubtitle>Card subtitle</CardSubtitle>
-                            <CardText>Some quick example text to build on the card title and make up the bulk of the card's content.</CardText>
-                            <Button>Button</Button>
+                            
+                            <CardText className='text-center'>Cantidad: {data.users}</CardText>
+                            
                         </CardBody>
                     </Card>
                 </Col>
@@ -52,12 +46,11 @@ const Starter = () => {
                     {/*Card-1*/}
                     {/*--------------------------------------------------------------------------------*/}
                     <Card>
-                        <CardImg top width="100%" src={img2} />
+                    <CardTitle className="bg-light border-bottom p-3 mb-0 text-center"><i class="mdi mdi-car"></i> Proveedores</CardTitle>
                         <CardBody>
-                            <CardTitle>Card title</CardTitle>
-                            <CardSubtitle>Card subtitle</CardSubtitle>
-                            <CardText>Some quick example text to build on the card title and make up the bulk of the card's content.</CardText>
-                            <Button>Button</Button>
+                            
+                            <CardText className='text-center'>Cantidad: {data.providers}</CardText>
+                            
                         </CardBody>
                     </Card>
                 </Col>
@@ -66,12 +59,54 @@ const Starter = () => {
                     {/*Card-1*/}
                     {/*--------------------------------------------------------------------------------*/}
                     <Card>
-                        <CardImg top width="100%" src={img3} />
+                    <CardTitle className="bg-light border-bottom p-3 mb-0 text-center"><i class="mdi mdi-shopping"></i> Productos</CardTitle>
                         <CardBody>
-                            <CardTitle>Card title</CardTitle>
-                            <CardSubtitle>Card subtitle</CardSubtitle>
-                            <CardText>Some quick example text to build on the card title and make up the bulk of the card's content.</CardText>
-                            <Button>Button</Button>
+                            
+                            <CardText className='text-center'>Cantidad: {data.products}</CardText>
+                            
+                        </CardBody>
+                    </Card>
+                </Col>
+            </Row>
+
+
+            <Row>
+                <Col xs="12" md="4">
+                    {/*--------------------------------------------------------------------------------*/}
+                    {/*Card-1*/}
+                    {/*--------------------------------------------------------------------------------*/}
+                    <Card>
+                    <CardTitle className="bg-light border-bottom p-3 mb-0 text-center"><i className='mdi mdi-account-key'></i> Empleados</CardTitle>
+                        <CardBody>
+                            
+                            <CardText className='text-center'>Cantidad: {data.employees}</CardText>
+                            
+                        </CardBody>
+                    </Card>
+                </Col>
+                <Col xs="12" md="4">
+                    {/*--------------------------------------------------------------------------------*/}
+                    {/*Card-1*/}
+                    {/*--------------------------------------------------------------------------------*/}
+                    <Card>
+                    <CardTitle className="bg-light border-bottom p-3 mb-0 text-center"><i className='mdi mdi-chart-line'></i> Lineas</CardTitle>
+                        <CardBody>
+                            
+                            <CardText className='text-center'>Cantidad: {data.lines}</CardText>
+                            
+                        </CardBody>
+                    </Card>
+                </Col>
+                <Col xs="12" md="4">
+                    {/*--------------------------------------------------------------------------------*/}
+                    {/*Card-1*/}
+                    {/*--------------------------------------------------------------------------------*/}
+                    <Card>
+                    <CardTitle className="bg-light border-bottom p-3 mb-0 text-center"><i className='mdi mdi-city'></i> Departamentos</CardTitle>
+                        <CardBody>
+                            
+                            <CardText className='text-center'>Cantidad: {data.departments}</CardText>
+                            
                         </CardBody>
                     </Card>
                 </Col>

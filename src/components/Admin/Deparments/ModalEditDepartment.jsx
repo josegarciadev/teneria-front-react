@@ -61,7 +61,7 @@ const ModalEditDepartment = ({handleDispatch,department}) => {
         <i className="mdi mdi-border-color"></i>
       </button>
       <Modal isOpen={modal} toggle={toggle}>
-        <ModalHeader toggle={toggle}>Agregar Nuevo Departamento</ModalHeader>
+        <ModalHeader toggle={toggle}>Editar Departamento</ModalHeader>
         <ModalBody>
           <Form>
             <FormGroup>
@@ -87,7 +87,7 @@ const ModalEditDepartment = ({handleDispatch,department}) => {
               />
             </FormGroup>
             <FormGroup>
-              <Label for="exampleSelect">Select</Label>
+              <Label for="exampleSelect">Estado</Label>
               <Input
                 type="select"
                 name="delete"

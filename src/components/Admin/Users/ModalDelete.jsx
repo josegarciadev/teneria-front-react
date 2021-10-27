@@ -36,7 +36,7 @@ const ModalDelete = ({ user,handleDispatch,title}) => {
     </button>
         <Modal isOpen={modal} toggle={toggle}>
           <ModalHeader toggle={toggle}>
-            {title} {user.name}
+            Eliminar: {user.name}
           </ModalHeader>
           <ModalBody>
            ¿Esta seguro de eliminar este usuario?

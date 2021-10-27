@@ -4,8 +4,7 @@ import styles from "./Objectives.module.css";
 const VisionHome = () => {
   return (
     <>
-      <div className={`${styles.content}`}>
-
+      <div className={`${styles.content}`} id="objective">
         <h1 className={`${styles.title} d-flex justify-content-center`}>
         Objetivo General
         </h1>

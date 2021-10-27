@@ -1,5 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap");
-@import url('https://fonts.googleapis.com/css2?family=Cookie&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Cookie&display=swap");
 
 * {
   margin: 0;
@@ -33,21 +33,21 @@
 }
 
 .subtitle {
-    font-size: 30px;
-    color: white;
-    line-height: 1.1em;
-    font-weight: bold;
-    font-family: "Poppins", sans-serif;
-    margin-left: 250px!important;
+  font-size: 30px;
+  color: white;
+  line-height: 1.1em;
+  font-weight: bold;
+  font-family: "Poppins", sans-serif;
+  margin-left: 250px !important;
 }
 
 .titleTwo {
-    font-size: 50px;
-    color: #630021;
-    line-height: 1.1em;
-    font-weight: bold;
-    font-family: 'Cookie', cursive;
-    margin-right: 120px!important;
+  font-size: 50px;
+  color: #630021;
+  line-height: 1.1em;
+  font-weight: bold;
+  font-family: "Cookie", cursive;
+  margin-right: 120px !important;
 }
 
 @media screen and (min-width: 1536px) {

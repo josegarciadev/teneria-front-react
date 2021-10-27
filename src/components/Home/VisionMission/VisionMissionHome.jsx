@@ -4,7 +4,7 @@ import styles from "./VisionMission.module.css";
 const VisionHome = () => {
   return (
     <>
-      <div className={`${styles.content}`}>
+      <div className={`${styles.content}`} id="VisionMission">
 
          <h1 className={`${styles.titleOne} d-flex justify-content-center`}>
         Misión
@@ -19,16 +19,6 @@ const VisionHome = () => {
         <p className={`${styles.vision} d-flex justify-content-center`}>
         Procesar y comercializar pieles de alta calidad que satisfagan las exigencias del mercado global.
         </p>
-
-        {/*<h1 className={`${styles.titleFour} d-flex justify-content-center`}>
-        Objetivo General
-        </h1>
-        <p className={`${styles.objective} d-flex justify-content-center`}>
-        Procesar y comercializar pieles de alta calidad que satisfagan las exigencias del mercado global.
-        </p> */}
-
-
-
       </div>
     </>
   );

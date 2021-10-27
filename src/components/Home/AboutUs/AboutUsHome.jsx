@@ -4,7 +4,7 @@ import styles from "./AboutUs.module.css";
 const AboutUs = () => {
   return (
     <>
-      <div className={`${styles.content}`}>
+      <div className={`${styles.content}`} id="AboutUs">
         <h1 className={`${styles.title} d-flex justify-content-center`}>
         ¿Quienes Somos?
         </h1>
