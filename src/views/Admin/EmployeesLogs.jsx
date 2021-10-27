@@ -15,7 +15,7 @@ const EmployeesLogs = () => {
         dispatch(getEmployees());
         await axiosFetch({
             method: "get",
-            url: "/admin/employeeLogs/all",
+            url: "/logs/employeeLogs/all",
             headers:{
               Authorization: 'Bearer ' + localStorage.getItem('user-token')
             }

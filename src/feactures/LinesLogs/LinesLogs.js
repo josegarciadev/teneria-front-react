@@ -4,7 +4,7 @@ import axiosFetch from "../../config/config";
 export const getLinesLogs = createAsyncThunk("linesLogs/getLinesLogs", async () => {
   const users = await axiosFetch({
     method: "get",
-    url: "/admin/lineProdLog/all",
+    url: "/logs/lineProdLog/all",
     headers: {
       Authorization: "Bearer " + localStorage.getItem("user-token"),
     },

@@ -43,7 +43,7 @@ const ModalCreateLine = ({ handleDispatch,employees,linesProds }) => {
   const handleNewUser = async (e) => {
     await axiosFetch({
       method: "post",
-      url: "/admin/lineProdLog/create",
+      url: "/logs/lineProdLog/create",
       data: {
         line_product_scenes_id: form.line_product_scenes_id,
         employee_id:form.employee_id,

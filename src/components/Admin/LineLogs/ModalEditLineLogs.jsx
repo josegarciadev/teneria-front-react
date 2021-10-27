@@ -27,7 +27,7 @@ const ModalEditLine = ({handleDispatch,data,linesProds,employees}) => {
     const handleUpdate = async (e) => {
       await axiosFetch({
         method: "patch",
-        url: "/admin/lineProdLog/update/" + data.id,
+        url: "/logs/lineProdLog/update/" + data.id,
         data: {
           line_product_scenes_id: form.line_product_scenes_id,
           employee_id:form.employee_id,

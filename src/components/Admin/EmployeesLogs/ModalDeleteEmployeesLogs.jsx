@@ -16,7 +16,7 @@ const ModalDeleteEmployeeLogs = ({ data,handleDispatch}) => {
     const handleUpdate = async (e) => {
       await axiosFetch({
         method: "delete",
-        url: "/admin/employeeLogs/delete/" + data.id,
+        url: "/logs/employeeLogs/delete/" + data.id,
         headers: {
           Authorization: "Bearer " + localStorage.getItem("user-token"),
         },

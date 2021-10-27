@@ -6,7 +6,7 @@ export const getEmployeesLogs = createAsyncThunk(
   async () => {
     const users = await axiosFetch({
       method: "get",
-      url: "/admin/employeeLogs/all",
+      url: "/logs/employeeLogs/all",
       headers:{
         Authorization: 'Bearer ' + localStorage.getItem('user-token')
       }

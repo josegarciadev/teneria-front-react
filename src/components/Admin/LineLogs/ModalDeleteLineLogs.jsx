@@ -16,7 +16,7 @@ const ModalDeleteLine = ({ data,handleDispatch}) => {
     const handleUpdate = async (e) => {
       await axiosFetch({
         method: "delete",
-        url: "/admin/lineProdLog/delete/" + data.id,
+        url: "/logs/lineProdLog/delete/" + data.id,
         headers: {
           Authorization: "Bearer " + localStorage.getItem("user-token"),
         },
