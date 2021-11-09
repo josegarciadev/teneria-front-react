@@ -5,7 +5,7 @@
   height: 220px;
 }
 
-.title{
+.title {
   font-size: 40px;
   color: #630021;
   font-family: "Poppins", sans-serif;
@@ -21,4 +21,82 @@
   margin-right: 100px;
   margin-left: 100px;
   padding-bottom: 60px;
+}
+
+@media screen and (min-width: 1536px) {
+}
+
+@media screen and (max-width: 1200px) {
+  .content {
+    height: 180px;
+  }
+
+  .title {
+    font-size: 30px;
+    padding-top: 50px;
+  }
+
+  .objective {
+    font-size: 15px;
+  }
+}
+
+@media screen and (max-width: 992px) {
+  .content {
+    height: 155px;
+  }
+
+  .title {
+    font-size: 28px;
+    padding-top: 40px;
+  }
+
+  .objective {
+    font-size: 13px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .content {
+    height: 130px;
+  }
+
+  .title {
+    font-size: 25px;
+    padding-top: 35px;
+  }
+
+  .objective {
+    font-size: 10px;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .content {
+    height: 100px;
+  }
+
+  .title {
+    font-size: 18px;
+    padding-top: 25px;
+  }
+
+  .objective {
+    font-size: 7px;
+  }
+}
+
+@media screen and (max-width: 360px) {
+  .content {
+    height: 60px;
+  }
+
+  .title {
+    font-size: 13px;
+    padding-top: 10px;
+  } 
+
+  .objective {
+    font-size: 5px;
+  }
 }

@@ -42,6 +42,7 @@ const FollowUsHome = () => {
                 <FontAwesomeIcon
                   icon={faInstagramSquare}
                   style={{ height: 40, width: 40, color: "black" }}
+                  className={`${styles.instagram}`}
                 />
               </a>
               <a

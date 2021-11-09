@@ -1,40 +1,121 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap");
 
-.content{
-    background-image: url(../AboutUs/images/Planta-Teneria-Rubio.jpg);
-    width: 100%;
-    height: 600px;
-    background-size: cover;
-    position: relative;
+.content {
+  background-image: url(../AboutUs/images/Planta-Teneria-Rubio.jpg);
+  width: 100%;
+  height: 600px;
+  background-size: cover;
+  position: relative;
 }
 
-.content:before{
-    content: "";
-    width: 100%;
-    height: 100%;
-    background-color: rgb(99, 0, 33);
-    position: absolute;
-    opacity: 0.7;
+.content:before {
+  content: "";
+  width: 100%;
+  height: 100%;
+  background-color: rgb(99, 0, 33);
+  position: absolute;
+  opacity: 0.7;
 }
 
-.title{
-    position: relative;
-    font-size: 40px;
-    color: white;
-    font-family: "Poppins", sans-serif;
-    top: 230px;
+.title {
+  position: relative;
+  font-size: 40px;
+  color: white;
+  font-family: "Poppins", sans-serif;
+  top: 230px;
 }
 
-.texto{
-    position: relative;
+.texto {
+  position: relative;
+  font-size: 20px;
+  color: white;
+  font-family: "Poppins", sans-serif;
+  top: 240px;
+  text-align: justify;
+  margin-right: 100px;
+  margin-left: 100px;
+  margin-bottom: 30px;
+}
+
+@media screen and (min-width: 1536px) {
+}
+
+@media screen and (max-width: 1200px) {
+  .content {
+    height: 450px;
+  }
+
+  .title {
+    font-size: 35px;
+    top: 180px;
+  }
+
+  .texto {
+    font-size: 15px;
+    top: 190px;
+  }
+}
+
+@media screen and (max-width: 992px) {
+  .content {
+    height: 400px;
+  }
+
+  .title {
+    font-size: 30px;
+    top: 160px;
+  }
+
+  .texto {
+    font-size: 11.5px;
+    top: 170px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .content {
+    height: 350px;
+  }
+
+  .title {
     font-size: 20px;
-    color: white;
-    font-family: "Poppins", sans-serif;
-    top: 240px;
-    text-align: justify;
-    margin-right: 100px;
-    margin-left: 100px;
-    margin-bottom: 30px;
+    top: 140px;
+  }
+
+  .texto {
+    font-size: 8.4px;
+    top: 150px;
+  }
 }
 
+@media screen and (max-width: 576px) {
+  .content {
+    height: 250px;
+  }
 
+  .title {
+    font-size: 15px;
+    top: 100px;
+  }
+
+  .texto {
+    font-size: 5.5px;
+    top: 110px;
+  }
+}
+
+@media screen and (max-width: 360px) {
+  .content {
+    height: 200px;
+  }
+
+  .title {
+    font-size: 10px;
+    top: 60px;
+  }
+
+  .texto {
+    font-size: 5.5px;
+    top: 70px;
+  }
+}

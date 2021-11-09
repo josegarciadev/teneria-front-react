@@ -19,16 +19,13 @@ const HeaderHome = () => {
             </h1>
           </div>
           <div className="col-5">
-            <div className={`${styles.player} d-flex justify-content-center`}>
+            <div className={`${styles.videoDiv} d-flex justify-content-center`}>
             <ReactPlayer
               url="https://youtu.be/nIvHB_EbzEY"
-              width="340px"
-              height="300px"
               controls
+              className={`${styles.video}`}
             />
             </div>
-            
-            {/* <img src={img1} alt="" className={`${styles.img_size} d-flex justify-content-center`}/> */}
           </div>
         </div>
       </div>
