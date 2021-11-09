@@ -1,12 +1,9 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap");
 
 .content {
-  /* background-image: url(../AboutUs/images/Planta-Teneria-Rubio.jpg); */
   background: white;
   width: 100%;
   height: 300px;
-  /* background-size: cover;
-  position: relative; */
 }
 
 .titleOne {
@@ -45,4 +42,121 @@
   margin-bottom: 60px;
 }
 
+@media screen and (min-width: 1536px) {
+}
 
+@media screen and (max-width: 1200px) {
+  .content {
+    height: 250px;
+  }
+
+  .titleOne {
+    font-size: 30px;
+  }
+
+  .mission {
+    font-size: 15px;
+  }
+
+  .titleTwo {
+    font-size: 30px;
+  }
+
+  .vision {
+    font-size: 15px;
+  }
+}
+
+@media screen and (max-width: 992px) {
+  .content {
+    height: 240px;
+  }
+
+  .titleOne {
+    font-size: 28px;
+  }
+
+  .mission {
+    font-size: 13px;
+  }
+
+  .titleTwo {
+    font-size: 28px;
+  }
+
+  .vision {
+    font-size: 13px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .content {
+    height: 200px;
+  }
+
+  .titleOne {
+    font-size: 25px;
+    margin-top: 30px;
+  }
+
+  .mission {
+    font-size: 10px;
+  }
+
+  .titleTwo {
+    font-size: 25px;
+  }
+
+  .vision {
+    font-size: 10px;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .content {
+    height: 140px;
+  }
+
+  .titleOne {
+    font-size: 18px;
+    margin-top: 20px;
+  }
+
+  .mission {
+    font-size: 7px;
+  }
+
+  .titleTwo {
+    font-size: 18px;
+    margin-top: 20px;
+  }
+
+  .vision {
+    font-size: 7px;
+  }
+}
+
+
+@media screen and (max-width: 360px) {
+  .content {
+    height: 120px;
+  }
+
+  .titleOne {
+    font-size: 13px;
+    margin-top: 10px;
+  }
+
+  .mission {
+    font-size: 5px;
+  }
+
+  .titleTwo {
+    font-size: 13px;
+    margin-top: 10px;
+  }
+
+  .vision {
+    font-size: 5px; 
+  }
+}

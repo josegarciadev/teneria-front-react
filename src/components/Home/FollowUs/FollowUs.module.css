@@ -15,74 +15,248 @@
   margin-top: 30px;
 }
 
-.social{
+.social {
   color: #630021;
   font-family: "Poppins", sans-serif;
   font-size: 22px;
 }
 
-.title{
+.title {
   color: #630021;
   font-family: "Poppins", sans-serif;
   font-size: 22px;
   margin-bottom: 25px;
 }
 
-.subtitle{
-  color: #ffc82e;;
+.subtitle {
+  color: #ffc82e;
   font-family: "Poppins", sans-serif;
   font-size: 15px;
   line-height: 1em;
 }
 
-.data{
+.data {
   color: black;
   font-family: "Poppins", sans-serif;
   font-size: 13px;
   line-height: 1em;
 }
 
-.icons{
+.icons {
   margin-top: 20px;
   cursor: pointer;
 }
 
-.facebook{
-  margin-right:10px;
+.facebook {
+  margin-right: 10px;
 }
 
-.twitter{
-  margin-left:5px;
+.twitter {
+  margin-left: 5px;
 }
 
-.footer{
+.footer {
   font-family: "Poppins", sans-serif;
   margin-top: 20px;
   color: #292929;
   font-size: 12px;
 }
 
-.qr{
+.qr {
   height: 125px;
   margin-top: 10px;
 }
 
-@media screen and (min-width: 1536px) {
-  
-}
-
-@media screen and (max-width: 1200px) {
-  
-}
-
 @media screen and (max-width: 992px) {
-  
+  .logo {
+    height: 100px;
+    margin-left: 100px;
+    margin-top: 20px;
+  }
+
+  .social {
+    font-size: 20px;
+  }
+
+  .title {
+    font-size: 20px;
+    margin-bottom: 25px;
+  }
+
+  .subtitle {
+    font-size: 13px;
+  }
+
+  .data {
+    font-size: 13px;
+  }
+
+  .icons {
+    margin-top: 18px;
+  }
+
+  .facebook {
+    margin-right: 10px;
+  }
+
+  .twitter {
+    margin-left: 5px;
+  }
+
+  .footer {
+    margin-top: 15px;
+    font-size: 10px;
+  }
+
+  .qr {
+    height: 110px;
+    margin-top: 10px;
+  }
 }
 
 @media screen and (max-width: 768px) {
-  
+  .logo {
+    height: 80px;
+    margin-left: 80px;
+    margin-top: 20px;
+  }
+
+  .social {
+    font-size: 15px;
+  }
+
+  .title {
+    font-size: 15px;
+    margin-bottom: 20px;
+  }
+
+  .subtitle {
+    font-size: 13px;
+  }
+
+  .data {
+    font-size: 13px;
+  }
+
+  .icons {
+    margin-top: 18px;
+  }
+
+  .facebook {
+    margin-right: 10px;
+  }
+
+  .twitter {
+    margin-left: 5px;
+  }
+
+  .footer {
+    margin-top: 20px;
+    font-size: 12px;
+  }
+
+  .qr {
+    height: 90px;
+    margin-top: 10px;
+  }
 }
 
 @media screen and (max-width: 576px) {
-  
+  .logo {
+    height: 60px;
+    margin-left: 50px;
+    margin-top: 15px;
+  }
+
+  .social {
+    font-size: 13px;
+  }
+
+  .title {
+    font-size: 13px;
+    margin-bottom: 20px;
+  }
+
+  .subtitle {
+    font-size: 13px;
+  }
+
+  .data {
+    font-size: 13px;
+  }
+
+  .icons {
+    margin-top: 12px;
+  }
+
+  .facebook {
+    margin-right: 10px;
+  }
+
+  .twitter {
+    margin-left: 5px;
+  }
+
+  .footer {
+    margin-top: 15px;
+    font-size: 10px;
+  }
+
+  .qr {
+    height: 70px;
+    margin-top: 10px;
+  }
+}
+
+@media screen and (max-width: 360px) {
+  .logo {
+    height: 40px;
+    margin-left: 30px;
+    margin-top: 10px;
+  }
+
+  .social {
+    font-size: 13px;
+  }
+
+  .title {
+    font-size: 13px;
+    margin-bottom: 20px;
+  }
+
+  .subtitle {
+    font-size: 13px;
+  }
+
+  .data {
+    font-size: 13px;
+  }
+
+  .icons {
+    margin-top: 5px;
+  }
+
+  .facebook {
+    margin-left: -25px!important;
+  }
+
+  .instagram{
+    margin-left: -8px!important;
+  }
+
+  .twitter {
+    margin-left: 1px!important;
+    
+  }
+
+  .footer {
+    margin-top: 10px;
+    font-size: 10px;
+  }
+
+  .qr {
+    height: 70px;
+    margin-top: 10px;
+    margin-left: -30px;
+  }
 }
