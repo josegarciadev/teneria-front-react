@@ -9,7 +9,7 @@ const TableListProduct = ({products,handleDispatch}) => {
       };
     return (
         <div>
-            <Table>
+            <Table responsive>
         <thead>
           <tr>
             <th>Creado</th>

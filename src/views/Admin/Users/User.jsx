@@ -26,6 +26,7 @@ const User = () => {
             <CardBody>
             <div className="py-2 d-flex justify-content-between">
               <ModalUser buttonLabel="Nuevo Usuario" color='primary' title='Agregar Usuario' type='add' handleDispatch={handleDispatch}/>
+              <ModalUser buttonLabel="Nuevo Administrador" color='secondary' admn={true} title='Agregar Admin' type='add' handleDispatch={handleDispatch}/>
               <ButtonExport url='http://127.0.0.1:8000/api/v1/PDF/usersPdf' />
               </div>
               <TableListUser handleDispatch={handleDispatch} users={users}/>

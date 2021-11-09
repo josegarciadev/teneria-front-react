@@ -9,7 +9,7 @@ const TableListLine = ({handleDispatch, linesLogs,linesProds,employees}) => {
   };
   return (
     <div>
-      <Table>
+      <Table responsive>
         <thead>
           <tr>
             <th>Creado</th>

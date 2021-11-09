@@ -10,7 +10,7 @@ const TableListProvider = ({data,handleDispatch}) => {
       };
     return (
         <div>
-            <Table>
+            <Table responsive>
         <thead>
           <tr>
             <th>Creado</th>

@@ -5,7 +5,7 @@ import ModalDeleteProductProvider from './ModalDeleteProductProvider';
 const TableListProductProvider = ({data,handleDispatch}) => {
     return (
         <div>
-            <Table>
+            <Table responsive>
         <thead>
           <tr>
             <th>#</th>

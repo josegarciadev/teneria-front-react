@@ -1,6 +1,6 @@
 import React,{useEffect, useState} from 'react'
 import axiosFetch from '../config/config'
-import {Link} from 'react-router-dom'
+import LoadingSpinner from '../components/Loading/Loading'
 const LoginLayout = (props) => {
 
     const [Form, setForm] = useState({
@@ -69,6 +69,7 @@ const LoginLayout = (props) => {
                             <div className="form-group d-flex">
                                 <input type="password" value={Form.password} className="form-control rounded-left" name="password" placeholder="Contraseña" onChange={(e)=>handleChangeInput(e)} required />
                             </div>
+                            <LoadingSpinner/>
                             <div className="form-group">
                                 <button type="submit" className="form-control btn btn-primary rounded submit px-3" onClick={(e)=>handleLogin(e)}>Ingresar</button>
                             </div>
@@ -80,17 +81,17 @@ const LoginLayout = (props) => {
                                     <input type="checkbox" />
                                     <span className="checkmark "></span>
                                 </div>
-                                <div className="w-50 text-md-right">
+                                {/* <div className="w-50 text-md-right">
                                     <Link to='/'>¿Olvidaste la contraseña?</Link>
-                                </div>
+                                </div> */}
                             </div>
                         </form>
                     </div>
                 </div>
             </div>
-            <div className="text-center">
+           {/*  <div className="text-center">
                 <p>¿No tienes cuenta? <a>Registrate</a></p>
-            </div>
+            </div> */}
 
         </section>
     )

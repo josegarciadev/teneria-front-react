@@ -10,7 +10,7 @@ const TableEmployeesLogs = ({handleDispatch, empLogs,employees}) => {
   };
   return (
     <div>
-      <Table>
+      <Table responsive>
         <thead>
           <tr>
             <th>Creado</th>

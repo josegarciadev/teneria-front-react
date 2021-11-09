@@ -10,7 +10,7 @@ const TableListDepartments = ({ departments,handleDispatch }) => {
   };
   return (
     <div>
-      <Table>
+      <Table responsive>
         <thead>
           <tr>
             <th>Creado</th>

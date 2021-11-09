@@ -9,6 +9,8 @@ import Lines from '../views/Admin/Lines/Lines.jsx';
 import LinesProds from '../views/Admin/LinesProds/LinesProds.jsx';
 import LinesLogs from '../views/Admin/LinesLogs/LinesLogs.jsx';
 import EmployeesLogs from '../views/Admin/EmployeesLogs.jsx';
+import Audit from '../views/Admin/Audit/Audit.jsx';
+import UserLayout from '../views/User/UserLayout.jsx';
 
 var ThemeRoutesAdmin = [
   { 
@@ -153,12 +155,18 @@ var ThemeRoutesRoot = [
     path: '/ROOT/dashboard/auditorias',
     name: 'Auditorias',
     icon: 'mdi mdi-account',
-    component: User
+    component: Audit
   },
   { path: '/ROOT/dashboard', pathTo: '/ROOT/dashboard', name: 'Dashboard', redirect: true },
 ];
 
 var ThemeRoutesUser = [
+  { 
+    path: '/user/dashboard', 
+    name: 'Dashboard', 
+    icon: 'ti-loop', 
+    component: UserLayout 
+  },
   { 
     path: '/user/dashboard/employeesLogs', 
     name: 'Entradas/Salidas empleados', 

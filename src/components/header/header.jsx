@@ -36,8 +36,8 @@ const Header = (props) => {
           {/*--------------------------------------------------------------------------------*/}
           {/* Logos Or Icon will be goes here for Light Layout && Dark Layout                */}
           {/*--------------------------------------------------------------------------------*/}
-          <NavbarBrand href="/dashboard">
-            <p className='text-dark'>Teneria</p>
+          <NavbarBrand className='d-flex justify-content-center aling-items-center'>
+            <p className='text-dark text-center mt-3'>Teneria</p>
           </NavbarBrand>
           {/*--------------------------------------------------------------------------------*/}
           {/* Mobile View Toggler  [visible only after 768px screen]                         */}
