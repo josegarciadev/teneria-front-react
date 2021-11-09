@@ -6,12 +6,6 @@
   padding: 0;
 }
 
-.img_size {
-  height: 205px;
-  width: 100%;
-  background-size: cover;
-}
-
 .logo_size {
   height: 60px;
   width: 70px;
@@ -51,31 +45,137 @@
 }
 
 @media screen and (min-width: 1536px) {
-  .img_size {
-    height: 230px;
-  }
+  
 }
 
 @media screen and (max-width: 1200px) {
-  .img_size {
-    height: 180px;
+
+  .block {
+    height: 140px;
+    background: #ffc82e;
   }
+
+  .logo_size {
+    margin-left: 150px;
+  }
+
+  .title {
+    font-size: 25px;
+  }
+  
+  .subtitle {
+    font-size: 25px;
+  }
+  
+  .titleTwo {
+    font-size: 40px;
+  }
+  
 }
 
 @media screen and (max-width: 992px) {
-  .img_size {
-    height: 150px;
+
+  .block {
+    height: 130px;
+    background: #ffc82e;
+  }
+
+
+  .logo_size {
+    height: 50px;
+    width: 60px;
+    margin-left: 130px;
+  }
+
+  .title {
+    font-size: 20px;
+  }
+  
+  .subtitle {
+    font-size: 20px;
+  }
+  
+  .titleTwo {
+    font-size: 30px;
   }
 }
 
 @media screen and (max-width: 768px) {
-  .img_size {
-    height: 115px;
+  .block {
+    height: 110px;
+    background: #ffc82e;
+  }
+
+  .logo_size {
+    height: 40px;
+    width: 50px;
+    margin-left: 110px;
+  }
+
+  .title {
+    font-size: 15px;
+  }
+  
+  .subtitle {
+    font-size: 15px;
+    margin-left: 180px !important;
+  }
+  
+  .titleTwo {
+    font-size: 20px;
   }
 }
 
 @media screen and (max-width: 576px) {
-  .img_size {
-    height: 90px;
+
+  .block {
+    height: 80px;
+    background: #ffc82e;
+  }
+
+  .logo_size {
+    height: 30px;
+    width: 40px;
+    margin-left: 80px;
+  }
+
+  .title {
+    font-size: 10px;
+  }
+  
+  .subtitle {
+    font-size: 10px;
+    margin-left: 130px !important;
+  }
+  
+  .titleTwo {
+    font-size: 14px;
+  }
+}
+
+@media screen and (max-width: 360px) {
+  .block {
+    height: 50px;
+  }
+
+  .logo_size {
+    height: 20px;
+    width: 30px;
+    margin-left: 50px;
+  }
+
+  .title {
+    font-size: 4px;
+    margin-left: 40px !important;
+  }
+  
+  .subtitle {
+    font-size: 4px;
+    margin-left: 90px !important;
+  }
+  
+  .titleTwo {
+    font-size: 4px;
+    margin-left: 5px !important;
   }
 }

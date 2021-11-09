@@ -46,8 +46,8 @@ const ContactHome = () => {
                     Nombre
                   </label>
                   <input
+                    className={`${styles.input} form-control`}
                     type="email"
-                    className="form-control"
                     id="exampleInputEmail1"
                     aria-describedby="emailHelp"
                   />
@@ -59,7 +59,7 @@ const ContactHome = () => {
                   </label>
                   <input
                     type="email"
-                    className="form-control"
+                    className={`${styles.input} form-control`}
                     id="exampleInputEmail1"
                     aria-describedby="emailHelp"
                   />
@@ -71,7 +71,7 @@ const ContactHome = () => {
                   </label>
                   <input
                     type="email"
-                    className="form-control"
+                    className={`${styles.input} form-control`}
                     id="exampleInputEmail1"
                     aria-describedby="emailHelp"
                   />
@@ -82,7 +82,7 @@ const ContactHome = () => {
                     Mensaje
                   </label>
                   <textarea
-                    className="form-control"
+                    className={`${styles.input} form-control`}
                     id="exampleFormControlTextarea1"
                     rows="3"
                   ></textarea>

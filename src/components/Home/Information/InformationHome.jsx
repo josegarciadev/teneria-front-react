@@ -1,5 +1,4 @@
 import React from "react";
-//import styles from "../Header/Header.module.css";
 import logo from "./images/logo.png";
 import styles from "./Information.module.css";
 
@@ -20,12 +19,6 @@ const InformationHome = () => {
           </div>
           <h1 className={`${styles.titleTwo} m-auto text-center`}>Comprometidos con Junin ❤</h1>
         </div>
-
-      {/* <img
-          src={teneria}
-          alt=""
-          className={`${styles.img_size} d-flex justify-content-center`}
-        /> */}
     </>
   );
 };

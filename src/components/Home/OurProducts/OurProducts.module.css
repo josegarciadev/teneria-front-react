@@ -1,60 +1,319 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap");
 
-.container{
-    background: white;
-    width: 100%;
-    height: 580px;
+.container {
+  background: white;
+  width: 100%;
+  height: 580px;
 }
 
-.content{
-    background: #630021;
+.content {
+  background: #630021;
+  width: 70%;
+  height: 550px;
+  border-radius: 20px;
+  margin-top: 30px !important;
+  margin-bottom: 30px !important;
+  margin: auto;
+}
+
+.products {
+  width: 350px;
+  height: 350px;
+  margin-left: 100px;
+  margin-bottom: 80px;
+}
+
+.titleOne {
+  font-size: 35px;
+  color: #ffc82e;
+  font-family: "Poppins", sans-serif;
+  margin-left: 130px !important;
+}
+
+.titleTwo {
+  font-size: 35px;
+  color: #ffc82e;
+  font-family: "Poppins", sans-serif;
+  margin-left: 130px !important;
+  margin-bottom: 30px !important;
+}
+
+.text {
+  font-size: 18px;
+  color: white;
+  font-family: "Poppins", sans-serif;
+  margin-left: 130px !important;
+  margin-bottom: 50px !important;
+}
+
+.btn {
+  color: #630021;
+  background: #ffc82e;
+  margin-left: 190px !important;
+  font-family: "Poppins", sans-serif;
+  border-radius: 20px;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+@media screen and (min-width: 1536px) {
+  .container {
+    height: 580px;
+  }
+
+  .content {
     width: 70%;
     height: 550px;
-    border-radius: 20px;
-    margin-top: 30px!important;
-    margin-bottom: 30px!important;
-    margin: auto;
+  }
+
+  .products {
+    width: 380px;
+    height: 380px;
+  }
+
+  .titleOne {
+    font-size: 35px;
+  }
+
+  .titleTwo {
+    font-size: 35px;
+  }
+
+  .text {
+    font-size: 20px;
+  }
+
+  .btn {
+    margin-left: 210px !important;
+  }
 }
 
-.products{
-    width: 350px;
-    height: 350px;
+@media screen and (max-width: 1200px) {
+  .container {
+    height: 500px;
+  }
+
+  .content {
+    width: 70%;
+    height: 470px;
+    border-radius: 20px;
+    margin-top: 30px !important;
+    margin-bottom: 30px !important;
+  }
+
+  .products {
+    width: 320px;
+    height: 320px;
     margin-left: 100px;
     margin-bottom: 80px;
-}
+  }
 
-.titleOne{
-    font-size: 35px;
-    color: #ffc82e;
-    font-family: "Poppins", sans-serif;
-    margin-left: 130px!important;
-}
+  .titleOne {
+    font-size: 28px;
+    margin-left: 130px !important;
+  }
 
-.titleTwo{
-    font-size: 35px;
-    color: #ffc82e;
-    font-family: "Poppins", sans-serif;
-    margin-left: 130px!important;
-    margin-bottom: 30px!important;
-}
+  .titleTwo {
+    font-size: 28px;
+    margin-left: 130px !important;
+    margin-bottom: 30px !important;
+  }
 
-.text{
-    font-size: 18px;
-    color: white;
-    font-family: "Poppins", sans-serif;
-    margin-left: 130px!important;
-    margin-bottom: 50px!important;
-}
+  .text {
+    font-size: 13px;
+    margin-left: 130px !important;
+    margin-bottom: 50px !important;
+  }
 
-.btn{
-    color: #630021;
-    background: #ffc82e;
-    margin-left: 190px!important;
-    font-family: "Poppins", sans-serif;
+  .btn {
+    margin-left: 170px !important;
     border-radius: 20px;
-    text-decoration: none;
+  }
 }
 
-a:hover{
-    text-decoration: none;
+@media screen and (max-width: 992px) {
+  .container {
+    height: 410px;
+  }
+
+  .content {
+    width: 70%;
+    height: 380px;
+    border-radius: 20px;
+    margin-top: 30px !important;
+    margin-bottom: 30px !important;
+  }
+
+  .products {
+    width: 230px;
+    height: 230px;
+    margin-left: 100px;
+    margin-bottom: 80px;
+  }
+
+  .titleOne {
+    font-size: 20px;
+    margin-left: 130px !important;
+  }
+
+  .titleTwo {
+    font-size: 20px;
+    margin-left: 130px !important;
+    margin-bottom: 30px !important;
+  }
+
+  .text {
+    font-size: 9px;
+    margin-left: 130px !important;
+    margin-bottom: 40px !important;
+  }
+
+  .btn {
+    margin-left: 155px !important;
+    border-radius: 20px;
+    width: 80px;
+    height: 30px;
+    font-size: 10px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .container {
+    height: 280px;
+  }
+
+  .content {
+    width: 60%;
+    height: 250px;
+    border-radius: 20px;
+    margin-top: 30px !important;
+    margin-bottom: 30px !important;
+  }
+
+  .products {
+    width: 130px;
+    height: 130px;
+    margin-left: 80px;
+    margin-bottom: 60px;
+  }
+
+  .titleOne {
+    font-size: 10px;
+    margin-left: 100px !important;
+  }
+
+  .titleTwo {
+    font-size: 10px;
+    margin-left: 100px !important;
+    margin-bottom: 30px !important;
+  }
+
+  .text {
+    font-size: 5px;
+    margin-left: 100px !important;
+    margin-bottom: 25px !important;
+  }
+
+  .btn {
+    margin-left: 120px !important;
+    border-radius: 20px;
+    width: 45px;
+    height: 18px;
+    font-size: 4px;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .container {
+    height: 230px;
+  }
+
+  .content {
+    width: 60%;
+    height: 200px;
+    border-radius: 20px;
+    margin-top: 30px !important;
+    margin-bottom: 30px !important;
+  }
+
+  .products {
+    width: 110px;
+    height: 110px;
+    margin-left: 50px;
+    margin-bottom: 50px;
+  }
+
+  .titleOne {
+    font-size: 10px;
+    margin-left: 50px !important;
+  }
+
+  .titleTwo {
+    font-size: 10px;
+    margin-left: 50px !important;
+    margin-bottom: 30px !important;
+  }
+
+  .text {
+    font-size: 5px;
+    margin-left: 50px !important;
+    margin-bottom: 20px !important;
+  }
+
+  .btn {
+    margin-left: 65px !important;
+    border-radius: 20px;
+    width: 45px;
+    height: 18px;
+    font-size: 4px;
+  }
+}
+
+@media screen and (max-width: 360px) {
+  .container {
+    height: 170px;
+  }
+
+  .content {
+    width: 60%;
+    height: 150px;
+    border-radius: 20px;
+    margin-top: 20px !important;
+    margin-bottom: 20px !important;
+  }
+
+  .products {
+    width: 80px;
+    height: 80px;
+    margin-left: 15px;
+    margin-bottom: 40px;
+  }
+
+  .titleOne {
+    font-size: 8px;
+    margin-left: 25px !important;
+  }
+
+  .titleTwo {
+    font-size: 8px;
+    margin-left: 25px !important;
+    margin-bottom: 20px !important;
+  }
+
+  .text {
+    font-size: 3px;
+    margin-left: 25px !important;
+    margin-bottom: 10px !important;
+  }
+
+  .btn {
+    margin-left: 40px !important;
+    border-radius: 8px;
+    width: 30px;
+    height: 1px;
+    font-size:1.8px;
+  }
 }
