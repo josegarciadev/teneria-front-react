@@ -11,6 +11,7 @@ import {
   Input,
 } from "reactstrap";
 import axiosFetch from "../../../config/config";
+import { invalidData, successCreate } from "../../../Hooks/AlertValidate";
 const ModalEditLine = ({handleDispatch,data,linesProds,employees}) => {
     const [modal, setModal] = useState(false);
 
@@ -25,6 +26,11 @@ const ModalEditLine = ({handleDispatch,data,linesProds,employees}) => {
     };
 
     const handleUpdate = async (e) => {
+      if(form.employee_id===0){invalidData('Empleado')}
+    else if(form.line_product_id===0){invalidData('Linea Producto')}
+    else if(form.line_product_scenes_id===0){invalidData('Tipo')}
+    else if(form.count===0){invalidData('Cantidad diferente a 0')}
+    else{
       await axiosFetch({
         method: "patch",
         url: "/logs/lineProdLog/update/" + data.id,
@@ -41,8 +47,11 @@ const ModalEditLine = ({handleDispatch,data,linesProds,employees}) => {
         .then((resp) => {
           toggle();
           handleDispatch();
+          successCreate()
         })
         .catch((err) => {});
+    }
+      
     };
   return (
     <div>

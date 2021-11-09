@@ -11,6 +11,7 @@ import {
   Input,
 } from "reactstrap";
 import axiosFetch from "../../../config/config";
+import { invalidData, successCreate } from "../../../Hooks/AlertValidate";
 const ModalEditProduct = ({handleDispatch, product}) => {
     const [modal, setModal] = useState(false);
 
@@ -27,24 +28,31 @@ const ModalEditProduct = ({handleDispatch, product}) => {
   
 
     const handleUpdate = async (e) => {
-      await axiosFetch({
-        method: "patch",
-        url: "/admin/product/update/"+formProd.id,
-        data: {
-            code: formProd.code,
-          name: formProd.name,
-          type_product_id:formProd.type_product_id,
-          delete:formProd.delete
-        },
-        headers: {
-          Authorization: "Bearer " + localStorage.getItem("user-token"),
-        },
-      })
-        .then((resp) => {
-            toggle()
-          handleDispatch();
+      if(formProd.name===''){invalidData('Producto')}
+      else if(formProd.code===''){invalidData('Codigo')}
+      else if(formProd.type_product_id===0){invalidData('Unidad de medida')}
+      else{
+        await axiosFetch({
+          method: "patch",
+          url: "/admin/product/update/"+formProd.id,
+          data: {
+              code: formProd.code,
+            name: formProd.name,
+            type_product_id:formProd.type_product_id,
+            delete:formProd.delete
+          },
+          headers: {
+            Authorization: "Bearer " + localStorage.getItem("user-token"),
+          },
         })
-        .catch((err) => {});
+          .then((resp) => {
+              toggle()
+            handleDispatch();
+            successCreate()
+          })
+          .catch((err) => {});
+      }
+      
     };
     return (
       <div>

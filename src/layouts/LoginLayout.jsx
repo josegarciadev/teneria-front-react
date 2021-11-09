@@ -1,18 +1,23 @@
 import React,{useEffect, useState} from 'react'
 import axiosFetch from '../config/config'
 import LoadingSpinner from '../components/Loading/Loading'
+import Swal from 'sweetalert2'
+
 const LoginLayout = (props) => {
 
     const [Form, setForm] = useState({
         email:'',
         password:''
     })
+    const [loading, setLoading] = useState(false)
     const handleLogin = async (e)=>{
         e.preventDefault();
+
+        setLoading(true);
         await axiosFetch.post('/user/login',Form).then(({data})=>{
             localStorage.setItem('user-token',data.token);
             localStorage.setItem('user',JSON.stringify(data));
-
+            setLoading(false);
             if(data.roles?.includes('admin')){
                 props.history.push('/admin/dashboard')
             }else if(data.roles?.includes('root')){
@@ -21,7 +26,13 @@ const LoginLayout = (props) => {
                 props.history.push('/user/dashboard')
             }
         }).catch((error)=>{
-            console.log(error)
+            setLoading(false);
+            Swal.fire({
+                title: 'Error!',
+                text: 'Su correo/contraseña no es valida',
+                icon: 'error',
+                confirmButtonText: 'Ok'
+              })
         })
     }
     const handleChangeInput=(e)=>{
@@ -69,10 +80,18 @@ const LoginLayout = (props) => {
                             <div className="form-group d-flex">
                                 <input type="password" value={Form.password} className="form-control rounded-left" name="password" placeholder="Contraseña" onChange={(e)=>handleChangeInput(e)} required />
                             </div>
-                            <LoadingSpinner/>
-                            <div className="form-group">
+                            
+                            {
+                                loading
+                                ?
+                                <LoadingSpinner/>
+                                :
+
+                                <div className="form-group">
                                 <button type="submit" className="form-control btn btn-primary rounded submit px-3" onClick={(e)=>handleLogin(e)}>Ingresar</button>
                             </div>
+                            }
+                            
                             <div className="form-group d-md-flex">
                                 <div className="w-50">
                                     <label className="checkbox-wrap checkbox-primary px-2">

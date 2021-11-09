@@ -11,10 +11,13 @@ import {
   Input,
 } from "reactstrap";
 import axiosFetch from "../../../config/config";
+import Swal from 'sweetalert2'
+import LoadingSpinner from "../../Loading/Loading";
+import { invalidData, successCreate } from "../../../Hooks/AlertValidate";
 
 const ModalCreateDepartment = ({ handleDispatch }) => {
   const [modal, setModal] = useState(false);
-
+  const [loading, setLoading] = useState(false)
   const [formDep, setformDep] = useState({
     name: "",
     description: "",
@@ -22,7 +25,7 @@ const ModalCreateDepartment = ({ handleDispatch }) => {
   const toggle = () => setModal(!modal);
 
   const handleChange = (e) => {
-    console.log(e);
+   
     setformDep({
       ...formDep,
       [e.name]: e.value,
@@ -37,22 +40,30 @@ const ModalCreateDepartment = ({ handleDispatch }) => {
     toggle();
   };
   const handleNewUser = async (e) => {
-    await axiosFetch({
-      method: "post",
-      url: "/admin/department/create",
-      data: {
-        description: formDep.description,
-        name: formDep.name,
-      },
-      headers: {
-        Authorization: "Bearer " + localStorage.getItem("user-token"),
-      },
-    })
-      .then((resp) => {
-        handleClear();
-        handleDispatch();
+    if(formDep.name===''){
+     invalidData('Nombre')
+    }else{
+      setLoading(true)
+      await axiosFetch({
+        method: "post",
+        url: "/admin/department/create",
+        data: {
+          description: formDep.description,
+          name: formDep.name,
+        },
+        headers: {
+          Authorization: "Bearer " + localStorage.getItem("user-token"),
+        },
       })
-      .catch((err) => {});
+        .then((resp) => {
+          handleClear();
+          handleDispatch();
+          setLoading(false)
+          successCreate()
+        })
+        .catch((err) => {});
+    }
+    
   };
   return (
     <div>
@@ -74,7 +85,7 @@ const ModalCreateDepartment = ({ handleDispatch }) => {
               />
             </FormGroup>
             <FormGroup>
-              <Label for="Description">Descripciòn</Label>
+              <Label for="Description">Descripción</Label>
               <Input
                 type="textarea"
                 name="description"
@@ -86,12 +97,21 @@ const ModalCreateDepartment = ({ handleDispatch }) => {
           </Form>
         </ModalBody>
         <ModalFooter>
-          <Button color="primary" onClick={(e) => handleNewUser(e)}>
+          {loading
+          ?
+          <LoadingSpinner/>
+            :
+            <>
+            <Button color="primary" onClick={(e) => handleNewUser(e)}>
             Agregar
-          </Button>{" "}
+          </Button>
+          {" "}
           <Button color="secondary" onClick={toggle}>
             Cancelar
-          </Button>
+          </Button></>
+        }
+          
+          
         </ModalFooter>
       </Modal>
     </div>

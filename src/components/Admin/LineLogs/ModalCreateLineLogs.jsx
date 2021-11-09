@@ -11,12 +11,13 @@ import {
   Input,
 } from "reactstrap";
 import axiosFetch from "../../../config/config";
+import { invalidData, successCreate } from "../../../Hooks/AlertValidate";
 
 const ModalCreateLine = ({ handleDispatch,employees,linesProds }) => {
   const [modal, setModal] = useState(false);
 
   const [form, setform] = useState({
-    count: "",
+    count: 0,
     line_product_id: 0,
     employee_id:0,
     line_product_scenes_id:0
@@ -33,32 +34,40 @@ const ModalCreateLine = ({ handleDispatch,employees,linesProds }) => {
 
   const handleClear = () => {
     setform({
-      count: "",
+      count: 0,
     line_product_id: 0,
     employee_id:0,
     line_product_scenes_id:0
     });
     toggle();
   };
-  const handleNewUser = async (e) => {
-    await axiosFetch({
-      method: "post",
-      url: "/logs/lineProdLog/create",
-      data: {
-        line_product_scenes_id: form.line_product_scenes_id,
-        employee_id:form.employee_id,
-        line_product_id:form.line_product_id,
-        count:form.count
-      },
-      headers: {
-        Authorization: "Bearer " + localStorage.getItem("user-token"),
-      },
-    })
-      .then((resp) => {
-        handleClear();
-        handleDispatch();
+  const handleSave = async (e) => {
+    if(form.employee_id===0){invalidData('Empleado')}
+    else if(form.line_product_id===0){invalidData('Linea Producto')}
+    else if(form.line_product_scenes_id===0){invalidData('Tipo')}
+    else if(form.count===0){invalidData('Cantidad diferente a 0')}
+    else{
+      await axiosFetch({
+        method: "post",
+        url: "/logs/lineProdLog/create",
+        data: {
+          line_product_scenes_id: form.line_product_scenes_id,
+          employee_id:form.employee_id,
+          line_product_id:form.line_product_id,
+          count:form.count
+        },
+        headers: {
+          Authorization: "Bearer " + localStorage.getItem("user-token"),
+        },
       })
-      .catch((err) => {});
+        .then((resp) => {
+          handleClear();
+          handleDispatch();
+          successCreate()
+        })
+        .catch((err) => {});
+    }
+    
   };
   return (
     <div>
@@ -141,7 +150,7 @@ const ModalCreateLine = ({ handleDispatch,employees,linesProds }) => {
           </Form>
         </ModalBody>
         <ModalFooter>
-          <Button color="primary" onClick={(e) => handleNewUser(e)}>
+          <Button color="primary" onClick={(e) => handleSave(e)}>
             Agregar
           </Button>{" "}
           <Button color="secondary" onClick={toggle}>

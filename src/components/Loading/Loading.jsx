@@ -1,13 +1,11 @@
 import React from "react";
-import { Spinner } from 'reactstrap';
+import ReactLoading from 'react-loading';
 
 const LoadingSpinner = () => {
   return (
-    <div>
-      <Spinner color="primary" size="">
-        Loading...
-      </Spinner>
-    </div>
+    
+      <ReactLoading className='mx-auto py-2' type="spinningBubbles" color="primary" height={'5%'} width={'5%'}/>
+    
   );
 };
 

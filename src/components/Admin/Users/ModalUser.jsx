@@ -11,6 +11,7 @@ import {
   Input,
 } from "reactstrap";
 import axiosFetch from "../../../config/config";
+import { invalidData, successCreate } from "../../../Hooks/AlertValidate";
 
 const ModalUser = ({
   buttonLabel,
@@ -30,7 +31,7 @@ const ModalUser = ({
   const toggle = () => setModal(!modal);
 
   const handleChange = (e) => {
-    console.log(e);
+
     setFormUser({
       ...formUser,
       [e.name]: e.value,
@@ -47,6 +48,10 @@ const ModalUser = ({
   };
 
   const handleNewUser = async (e) => {
+    if(formUser.name===''){invalidData('Nombre')}
+    else if(formUser.email===''){invalidData('Email')}
+    else if(formUser.password===''){invalidData('Contraseña')}
+    else{
     await axiosFetch({
       method: "post",
       url: "/user/register",
@@ -62,11 +67,17 @@ const ModalUser = ({
       .then((resp) => {
         handleClear();
         handleDispatch();
+        successCreate()
       })
-      .catch((err) => {});
+      .catch((err) => {});}
+
   };
 
   const handleNewAdmin = async (e) => {
+    if(formUser.name===''){invalidData('Nombre')}
+    else if(formUser.email===''){invalidData('Email')}
+    else if(formUser.password===''){invalidData('Contraseña')}
+    else{
     await axiosFetch({
       method: "post",
       url: "/ROOT/user/createAdmin",
@@ -82,8 +93,10 @@ const ModalUser = ({
       .then((resp) => {
         handleClear();
         handleDispatch();
+        successCreate()
       })
       .catch((err) => {});
+    }
   };
 
   return (

@@ -10,47 +10,60 @@ import {
   Label,
   Input,
 } from "reactstrap";
+import Swal from "sweetalert2";
 import axiosFetch from "../../../config/config";
-const ModalEditDepartment = ({handleDispatch,department}) => {
-    const [modal, setModal] = useState(false);
+import LoadingSpinner from "../../Loading/Loading";
+const ModalEditDepartment = ({ handleDispatch, department }) => {
+  const [modal, setModal] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [formDep, setformDep] = useState(department);
+  const toggle = () => setModal(!modal);
 
-    const [formDep, setformDep] = useState(department);
-    const toggle = () => setModal(!modal);
-  
-    const handleChange = (e) => {
-      console.log(e);
-      setformDep({
-        ...formDep,
-        [e.name]: e.value,
+  const handleChange = (e) => {
+    
+    setformDep({
+      ...formDep,
+      [e.name]: e.value,
+    });
+  };
+
+  const handleClear = () => {
+    setformDep({
+      name: "",
+      password: "",
+      email: "",
+    });
+    toggle();
+  };
+  const handleUpdate = async (e) => {
+    if (formDep.name === "") {
+      Swal.fire({
+        title: "Error!",
+        text: "El nombre no puede estar Vacio",
+        icon: "error",
+        confirmButtonText: "Ok",
       });
-    };
-  
-    const handleClear = () => {
-      setformDep({
-        name: "",
-        password: "",
-        email: "",
-      });
-      toggle();
-    };
-    const handleUpdate = async (e) => {
+    } else {
+      setLoading(true);
       await axiosFetch({
         method: "patch",
         url: "/admin/department/update/" + department.id,
         data: {
-            description:formDep.description,
-            name:formDep.name,
+          description: formDep.description,
+          name: formDep.name,
         },
         headers: {
           Authorization: "Bearer " + localStorage.getItem("user-token"),
         },
       })
         .then((resp) => {
+          setLoading(false);
           handleClear();
           handleDispatch();
         })
         .catch((err) => {});
-    };
+    }
+  };
   return (
     <div>
       <button
@@ -102,12 +115,19 @@ const ModalEditDepartment = ({handleDispatch,department}) => {
           </Form>
         </ModalBody>
         <ModalFooter>
-          <Button color="primary" onClick={(e) => handleUpdate(e)}>
-            Editar
-          </Button>{" "}
-          <Button color="secondary" onClick={toggle}>
-            Cancelar
-          </Button>
+      
+          {loading ? (
+            <LoadingSpinner />
+          ) : (
+            <>
+              <Button color="primary" onClick={(e) => handleUpdate(e)}>
+                Editar
+              </Button>{" "}
+              <Button color="secondary" onClick={toggle}>
+                Cancelar
+              </Button>
+            </>
+          )}
         </ModalFooter>
       </Modal>
     </div>

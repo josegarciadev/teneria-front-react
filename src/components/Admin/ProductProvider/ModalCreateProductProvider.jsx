@@ -11,6 +11,7 @@ import {
   Input,
 } from "reactstrap";
 import axiosFetch from "../../../config/config";
+import { invalidData, successCreate } from "../../../Hooks/AlertValidate";
 
 const ModalCreateProviderProvider = ({handleDispatch,products, providers}) => {
     const [modal, setModal] = useState(false);
@@ -22,7 +23,7 @@ const ModalCreateProviderProvider = ({handleDispatch,products, providers}) => {
     const toggle = () => setModal(!modal);
   
     const handleChange = (e) => {
-      console.log(e);
+     
       setform({
         ...form,
         [e.name]: e.value,
@@ -37,6 +38,9 @@ const ModalCreateProviderProvider = ({handleDispatch,products, providers}) => {
       toggle();
     };
     const handleNew = async (e) => {
+      if(form.product_id===0){invalidData('Producto ')}
+    else if(form.provider_id===0){invalidData('Proveedor')}
+    else{
       await axiosFetch({
         method: "post",
         url: "/admin/product/prodprov",
@@ -51,8 +55,11 @@ const ModalCreateProviderProvider = ({handleDispatch,products, providers}) => {
         .then((resp) => {
           handleClear();
           handleDispatch();
+          successCreate()
         })
         .catch((err) => {});
+    }
+      
     };
     return (
       <div>

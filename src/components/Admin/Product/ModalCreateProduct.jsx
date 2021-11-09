@@ -11,6 +11,7 @@ import {
   Input,
 } from "reactstrap";
 import axiosFetch from "../../../config/config";
+import { invalidData, successCreate } from "../../../Hooks/AlertValidate";
 
 const ModalCreateProduct = ({handleDispatch}) => {
     const [modal, setModal] = useState(false);
@@ -23,7 +24,7 @@ const ModalCreateProduct = ({handleDispatch}) => {
     const toggle = () => setModal(!modal);
   
     const handleChange = (e) => {
-      console.log(e);
+     
       setformProd({
         ...formProd,
         [e.name]: e.value,
@@ -33,28 +34,36 @@ const ModalCreateProduct = ({handleDispatch}) => {
     const handleClear = () => {
       setformProd({
         name: "",
-        description: "",
+        code: "",
+        type_product_id:0
       });
       toggle();
     };
     const handleNewUser = async (e) => {
-      await axiosFetch({
-        method: "post",
-        url: "/admin/product/create",
-        data: {
-            code: formProd.code,
-          name: formProd.name,
-          type_product_id:formProd.type_product_id
-        },
-        headers: {
-          Authorization: "Bearer " + localStorage.getItem("user-token"),
-        },
-      })
-        .then((resp) => {
-          handleClear();
-          handleDispatch();
+      if(formProd.name===''){invalidData('Producto')}
+      else if(formProd.code===''){invalidData('Codigo')}
+      else if(formProd.type_product_id===0){invalidData('Unidad de medida')}
+      else{
+        await axiosFetch({
+          method: "post",
+          url: "/admin/product/create",
+          data: {
+              code: formProd.code,
+            name: formProd.name,
+            type_product_id:formProd.type_product_id
+          },
+          headers: {
+            Authorization: "Bearer " + localStorage.getItem("user-token"),
+          },
         })
-        .catch((err) => {});
+          .then((resp) => {
+            handleClear();
+            handleDispatch();
+            successCreate()
+          })
+          .catch((err) => {});
+      }
+      
     };
     return (
       <div>

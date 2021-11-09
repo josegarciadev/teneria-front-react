@@ -11,6 +11,7 @@ import {
   Input,
 } from "reactstrap";
 import axiosFetch from "../../../config/config";
+import {invalidData, successCreate } from "../../../Hooks/AlertValidate";
 
 const ModalEditEmploye = ({ handleDispatch, departments,employees }) => {
     const [modal, setModal] = useState(false);
@@ -30,6 +31,15 @@ const ModalEditEmploye = ({ handleDispatch, departments,employees }) => {
       toggle();
     };
     const handleNewUser = async (e) => {
+      if(formEmpl.dni===''){invalidData('Documento de Identidad')}
+    else if(formEmpl.name===''){invalidData('Nombre')}
+    else if(formEmpl.date_birth===''){invalidData('Fecha de nacimiento')}
+    else if(formEmpl.ingress===''){invalidData('Fecha de Ingreso')}
+    else if(formEmpl.address===''){invalidData('Dirección')}
+    else if(formEmpl.gender_id===0){invalidData('Genero')}
+    else if(formEmpl.phone_number===0){invalidData('Numero Telefonico')}
+    else if(formEmpl.department_id===0){invalidData('Departamento')}
+    else{
       await axiosFetch({
         method: "patch",
         url: "/admin/employee/update/"+formEmpl.id,
@@ -51,8 +61,11 @@ const ModalEditEmploye = ({ handleDispatch, departments,employees }) => {
         .then((resp) => {
           handleClear();
           handleDispatch();
+          successCreate()
         })
         .catch((err) => {});
+      
+      }
     };
     return (
         <div>

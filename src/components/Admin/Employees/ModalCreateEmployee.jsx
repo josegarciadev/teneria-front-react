@@ -11,6 +11,7 @@ import {
   Input,
 } from "reactstrap";
 import axiosFetch from "../../../config/config";
+import { duplicateValue, invalidData, successCreate } from "../../../Hooks/AlertValidate";
 
 const ModalCreateEmployee = ({ handleDispatch, departments }) => {
   const [modal, setModal] = useState(false);
@@ -47,7 +48,22 @@ const ModalCreateEmployee = ({ handleDispatch, departments }) => {
     });
     toggle();
   };
+  const validate = ()=>{
+    if(formEmpl.dni===''){
+      invalidData('Documento de Identidad')
+      return
+    }
+  }
   const handleNewUser = async (e) => {
+    if(formEmpl.dni===''){invalidData('Documento de Identidad')}
+    else if(formEmpl.name===''){invalidData('Nombre')}
+    else if(formEmpl.date_birth===''){invalidData('Fecha de nacimiento')}
+    else if(formEmpl.ingress===''){invalidData('Fecha de Ingreso')}
+    else if(formEmpl.address===''){invalidData('Dirección')}
+    else if(formEmpl.gender_id===0){invalidData('Genero')}
+    else if(formEmpl.phone_number===0){invalidData('Numero Telefonico')}
+    else if(formEmpl.department_id===0){invalidData('Departamento')}
+    else{
     await axiosFetch({
       method: "post",
       url: "/admin/employee/create",
@@ -68,8 +84,15 @@ const ModalCreateEmployee = ({ handleDispatch, departments }) => {
       .then((resp) => {
         handleClear();
         handleDispatch();
+        successCreate()
+        console.log(resp)
       })
-      .catch((err) => {});
+      .catch((err) => {
+        if(err.response.data.message){
+          duplicateValue('DNI')
+        }
+      });
+    }
   };
   return (
     <div>
@@ -153,7 +176,7 @@ const ModalCreateEmployee = ({ handleDispatch, departments }) => {
               </Input>
             </FormGroup>
             <FormGroup>
-              <Label for="exampleSelect">Department</Label>
+              <Label for="exampleSelect">Departmento</Label>
               <Input
                 type="select"
                 name="department_id"

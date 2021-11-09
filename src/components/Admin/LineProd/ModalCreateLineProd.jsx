@@ -11,12 +11,13 @@ import {
   Input,
 } from "reactstrap";
 import axiosFetch from "../../../config/config";
+import { invalidData, successCreate } from "../../../Hooks/AlertValidate";
 
 const ModalCreateLine = ({ handleDispatch,lines,prods }) => {
   const [modal, setModal] = useState(false);
 
   const [form, setform] = useState({
-    stock: "",
+    stock: 0,
     line_id: 0,
     product_provider_id:0
   });
@@ -32,30 +33,37 @@ const ModalCreateLine = ({ handleDispatch,lines,prods }) => {
 
   const handleClear = () => {
     setform({
-      stock: "",
+      stock: 0,
       line_id: 0,
       product_provider_id:0
     });
     toggle();
   };
   const handleNewUser = async (e) => {
-    await axiosFetch({
-      method: "post",
-      url: "/admin/lineProd/create",
-      data: {
-        product_provider_id: form.product_provider_id,
-        line_id:form.line_id,
-        stock:form.stock
-      },
-      headers: {
-        Authorization: "Bearer " + localStorage.getItem("user-token"),
-      },
-    })
-      .then((resp) => {
-        handleClear();
-        handleDispatch();
+    if(form.product_provider_id===0){invalidData('Producto Proveedor')}
+    else if(form.line_id===0){invalidData('Linea')}
+    else if(form.stock===0){invalidData('Stock')}
+    else{
+      await axiosFetch({
+        method: "post",
+        url: "/admin/lineProd/create",
+        data: {
+          product_provider_id: form.product_provider_id,
+          line_id:form.line_id,
+          stock:form.stock
+        },
+        headers: {
+          Authorization: "Bearer " + localStorage.getItem("user-token"),
+        },
       })
-      .catch((err) => {});
+        .then((resp) => {
+          handleClear();
+          handleDispatch();
+          successCreate()
+        })
+        .catch((err) => {});
+    }
+    
   };
   return (
     <div>

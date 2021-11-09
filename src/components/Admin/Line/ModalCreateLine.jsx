@@ -11,6 +11,7 @@ import {
   Input,
 } from "reactstrap";
 import axiosFetch from "../../../config/config";
+import { invalidData, successCreate } from "../../../Hooks/AlertValidate";
 
 const ModalCreateLine = ({ handleDispatch,departments }) => {
   const [modal, setModal] = useState(false);
@@ -22,7 +23,7 @@ const ModalCreateLine = ({ handleDispatch,departments }) => {
   const toggle = () => setModal(!modal);
 
   const handleChange = (e) => {
-    console.log(e);
+
     setform({
       ...form,
       [e.name]: e.value,
@@ -36,23 +37,29 @@ const ModalCreateLine = ({ handleDispatch,departments }) => {
     });
     toggle();
   };
-  const handleNewUser = async (e) => {
-    await axiosFetch({
-      method: "post",
-      url: "/admin/line/create",
-      data: {
-        name: form.name,
-        department_id:form.department_id
-      },
-      headers: {
-        Authorization: "Bearer " + localStorage.getItem("user-token"),
-      },
-    })
-      .then((resp) => {
-        handleClear();
-        handleDispatch();
+  const handleSave = async (e) => {
+    if(form.name===''){invalidData('Nombre')}
+    else if(form.department_id===0){invalidData('Departmanto')}
+    else{
+      await axiosFetch({
+        method: "post",
+        url: "/admin/line/create",
+        data: {
+          name: form.name,
+          department_id:form.department_id
+        },
+        headers: {
+          Authorization: "Bearer " + localStorage.getItem("user-token"),
+        },
       })
-      .catch((err) => {});
+        .then((resp) => {
+          handleClear();
+          handleDispatch();
+          successCreate()
+        })
+        .catch((err) => {});
+    }
+    
   };
   return (
     <div>
@@ -97,7 +104,7 @@ const ModalCreateLine = ({ handleDispatch,departments }) => {
           </Form>
         </ModalBody>
         <ModalFooter>
-          <Button color="primary" onClick={(e) => handleNewUser(e)}>
+          <Button color="primary" onClick={(e) => handleSave(e)}>
             Agregar
           </Button>{" "}
           <Button color="secondary" onClick={toggle}>

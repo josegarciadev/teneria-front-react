@@ -11,6 +11,7 @@ import {
   Input,
 } from "reactstrap";
 import axiosFetch from "../../../config/config";
+import { invalidData, successCreate } from "../../../Hooks/AlertValidate";
 
 const ModalCreateProvider = ({handleDispatch}) => {
     const [modal, setModal] = useState(false);
@@ -23,7 +24,7 @@ const ModalCreateProvider = ({handleDispatch}) => {
     const toggle = () => setModal(!modal);
   
     const handleChange = (e) => {
-      console.log(e);
+  
       setform({
         ...form,
         [e.name]: e.value,
@@ -37,21 +38,26 @@ const ModalCreateProvider = ({handleDispatch}) => {
       toggle();
     };
     const handleNew = async (e) => {
-      await axiosFetch({
-        method: "post",
-        url: "/admin/provider/create",
-        data: {
-          name: form.name,
-        },
-        headers: {
-          Authorization: "Bearer " + localStorage.getItem("user-token"),
-        },
-      })
-        .then((resp) => {
-          handleClear();
-          handleDispatch();
+      if(form.name===''){invalidData('Nombre')}
+      else{
+        await axiosFetch({
+          method: "post",
+          url: "/admin/provider/create",
+          data: {
+            name: form.name,
+          },
+          headers: {
+            Authorization: "Bearer " + localStorage.getItem("user-token"),
+          },
         })
-        .catch((err) => {});
+          .then((resp) => {
+            handleClear();
+            handleDispatch();
+            successCreate()
+          })
+          .catch((err) => {});
+      }
+      
     };
     return (
       <div>

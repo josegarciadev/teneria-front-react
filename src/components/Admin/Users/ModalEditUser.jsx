@@ -11,6 +11,7 @@ import {
   Input,
 } from "reactstrap";
 import axiosFetch from "../../../config/config";
+import { invalidData, successCreate } from "../../../Hooks/AlertValidate";
 const ModalEditUser = ({ title, handleDispatch, user }) => {
   const [modal, setModal] = useState(false);
 
@@ -18,7 +19,7 @@ const ModalEditUser = ({ title, handleDispatch, user }) => {
   const toggle = () => setModal(!modal);
 
   const handleChange = (e) => {
-    console.log(e);
+   
     setFormUser({
       ...formUser,
       [e.name]: e.value,
@@ -34,6 +35,10 @@ const ModalEditUser = ({ title, handleDispatch, user }) => {
     toggle();
   };
   const handleUpdate = async (e) => {
+    if(formUser.name===''){invalidData('Nombre')}
+    else if(formUser.email===''){invalidData('Email')}
+    else if(formUser.password===''){invalidData('Contraseña')}
+    else{
     await axiosFetch({
       method: "patch",
       url: "/admin/user/update/" + user.id,
@@ -49,8 +54,10 @@ const ModalEditUser = ({ title, handleDispatch, user }) => {
       .then((resp) => {
         handleClear();
         handleDispatch();
+        successCreate()
       })
       .catch((err) => {});
+    }
   };
   return (
     <div>

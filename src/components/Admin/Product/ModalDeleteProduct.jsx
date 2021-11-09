@@ -7,6 +7,7 @@ import {
   ModalFooter,
 } from "reactstrap";
 import axiosFetch from "../../../config/config";
+import { successCreate } from "../../../Hooks/AlertValidate";
 
 const ModalDeleteProduct = ({handleDispatch,product}) => {
     const [modal, setModal] = useState(false);
@@ -24,6 +25,7 @@ const ModalDeleteProduct = ({handleDispatch,product}) => {
         .then((resp) => {
           toggle();
           handleDispatch();
+          successCreate()
         })
         .catch((err) => {});
   

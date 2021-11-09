@@ -12,6 +12,7 @@ import {
   Input,
 } from "reactstrap";
 import axiosFetch from "../../../config/config";
+import { invalidData, successCreate } from "../../../Hooks/AlertValidate";
 
 const ModalCreateEmployeesLogs = ({ handleDispatch,employees,linesProds }) => {
   const [modal, setModal] = useState(false);
@@ -25,7 +26,7 @@ const ModalCreateEmployeesLogs = ({ handleDispatch,employees,linesProds }) => {
   const toggle = () => setModal(!modal);
 
   const handleChange = (e) => {
-    console.log(e);
+ 
     setform({
       ...form,
       [e.name]: e.value,
@@ -41,24 +42,31 @@ const ModalCreateEmployeesLogs = ({ handleDispatch,employees,linesProds }) => {
     toggle();
   };
   const handleNewUser = async (e) => {
-    await axiosFetch({
-      method: "post",
-      url: "/logs/employeeLogs/create",
-      data: {
-        employee_scene_id: form.employee_scene_id,
-        employee_id:form.employee_id,
-        description:form.description,
-        date: moment()
-      },
-      headers: {
-        Authorization: "Bearer " + localStorage.getItem("user-token"),
-      },
-    })
-      .then((resp) => {
-        handleClear();
-        handleDispatch();
+    if(form.employee_id===0){invalidData('Empleado')}
+    else if(form.employee_scene_id===0){invalidData('Tipo')}
+    else if(form.description===''){invalidData('Descripción')}
+    else{
+      await axiosFetch({
+        method: "post",
+        url: "/logs/employeeLogs/create",
+        data: {
+          employee_scene_id: form.employee_scene_id,
+          employee_id:form.employee_id,
+          description:form.description,
+          date: moment()
+        },
+        headers: {
+          Authorization: "Bearer " + localStorage.getItem("user-token"),
+        },
       })
-      .catch((err) => {});
+        .then((resp) => {
+          handleClear();
+          handleDispatch();
+          successCreate()
+        })
+        .catch((err) => {});
+    }
+    
   };
   return (
     <div>
@@ -93,7 +101,7 @@ const ModalCreateEmployeesLogs = ({ handleDispatch,employees,linesProds }) => {
             </FormGroup> 
             
             <FormGroup>
-              <Label for="exampleSelect">Descripción</Label>
+              <Label for="exampleSelect">Tipo</Label>
               <Input
                 type="select"
                 name="employee_scene_id"

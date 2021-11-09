@@ -11,6 +11,7 @@ import {
   Input,
 } from "reactstrap";
 import axiosFetch from "../../../config/config";
+import { invalidData, successCreate } from "../../../Hooks/AlertValidate";
 const ModalEditProvider = ({handleDispatch, data}) => {
     const [modal, setModal] = useState(false);
 
@@ -27,24 +28,29 @@ const ModalEditProvider = ({handleDispatch, data}) => {
   
 
     const handleUpdate = async (e) => {
-      await axiosFetch({
-        method: "patch",
-        url: "/admin/provider/update/"+form.id,
-        data: {
-            code: form.code,
-          name: form.name,
-          type_data_id:form.type_data_id,
-          delete:form.delete
-        },
-        headers: {
-          Authorization: "Bearer " + localStorage.getItem("user-token"),
-        },
-      })
-        .then((resp) => {
-            toggle()
-          handleDispatch();
+      if(form.name===''){invalidData('Nombre')}
+      else{
+        await axiosFetch({
+          method: "patch",
+          url: "/admin/provider/update/"+form.id,
+          data: {
+              code: form.code,
+            name: form.name,
+            type_data_id:form.type_data_id,
+            delete:form.delete
+          },
+          headers: {
+            Authorization: "Bearer " + localStorage.getItem("user-token"),
+          },
         })
-        .catch((err) => {});
+          .then((resp) => {
+              toggle()
+            handleDispatch();
+            successCreate()
+          })
+          .catch((err) => {});
+      }
+      
     };
     return (
       <div>

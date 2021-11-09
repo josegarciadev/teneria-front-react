@@ -11,6 +11,7 @@ import {
   Input,
 } from "reactstrap";
 import axiosFetch from "../../../config/config";
+import { invalidData, successCreate } from "../../../Hooks/AlertValidate";
 const ModalEditEmployeesLogs = ({ handleDispatch, data, employees }) => {
   const [modal, setModal] = useState(false);
 
@@ -25,25 +26,32 @@ const ModalEditEmployeesLogs = ({ handleDispatch, data, employees }) => {
   };
 
   const handleUpdate = async (e) => {
-    await axiosFetch({
-      method: "patch",
-      url: "/logs/employeeLogs/update/" + data.id,
-      data: {
-        employee_scene_id: form.employee_scene_id,
-        employee_id:form.employee_id,
-        description:form.description,
-        date:form.date,
-        delete:form.delete
-      },
-      headers: {
-        Authorization: "Bearer " + localStorage.getItem("user-token"),
-      },
-    })
-      .then((resp) => {
-        toggle();
-        handleDispatch();
+    if(form.employee_id===0){invalidData('Empleado')}
+    else if(form.employee_scene_id===0){invalidData('Tipo')}
+    else if(form.description===''){invalidData('Descripción')}
+    else{
+      await axiosFetch({
+        method: "patch",
+        url: "/logs/employeeLogs/update/" + data.id,
+        data: {
+          employee_scene_id: form.employee_scene_id,
+          employee_id:form.employee_id,
+          description:form.description,
+          date:form.date,
+          delete:form.delete
+        },
+        headers: {
+          Authorization: "Bearer " + localStorage.getItem("user-token"),
+        },
       })
-      .catch((err) => {});
+        .then((resp) => {
+          toggle();
+          handleDispatch();
+          successCreate()
+        })
+        .catch((err) => {});
+    }
+    
   };
   return (
     <div>
@@ -82,7 +90,7 @@ const ModalEditEmployeesLogs = ({ handleDispatch, data, employees }) => {
             </FormGroup>
 
             <FormGroup>
-              <Label for="exampleSelect">Descripción</Label>
+              <Label for="exampleSelect">Tipo</Label>
               <Input
                 type="select"
                 name="employee_scene_id"
